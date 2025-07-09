@@ -5,77 +5,77 @@
 
 
         <div th:fragment="registro-formulario">
-    <main class="container my-5">
-        <h2 class="text-center mb-4" th:text="#{usuario.titulo.registro}">Crear cuenta nueva</h2>
+            <main class="container my-5">
+                <h2 class="text-center mb-4" th:text="#{usuario.titulo.registro}">Crear cuenta nueva</h2>
 
-        <div class="p-4 rounded-4 registro-container">
+                <div class="p-4 rounded-4 registro-container">
 
-            <!-- Mensaje de éxito -->
-            <div th:if="${param.exito}" class="alert alert-success text-center" role="alert">
-                <p th:text="#{usuario.registro.exito}"></p>
-            </div>
+                    <!-- Mensaje de éxito -->
+                    <div th:if="${param.exito}" class="alert alert-success text-center" role="alert">
+                        <p th:text="#{usuario.registro.exito}"></p>
+                    </div>
 
-            <!-- Formulario -->
-            <form th:action="@{/usuario/guardar}" th:object="${usuario}" method="post" enctype="multipart/form-data" novalidate>
+                    <!-- Formulario -->
+                    <form th:action="@{/usuario/guardar}" th:object="${usuario}" method="post" enctype="multipart/form-data" novalidate>
 
-                <!-- Contenedor avatar -->
-                <div class="avatar-wrapper text-center mb-4">
+                        <!-- Contenedor avatar -->
+                        <div class="avatar-wrapper text-center mb-4">
 
-                    <img id="avatarPreview"
-                         th:src="@{/img/default-avatar.jpg}"  
-                         alt="avatar"
-                         class="avatar-circle">
+                            <img id="avatarPreview"
+                                 th:src="@{/img/default-avatar.jpg}"  
+                                 alt="avatar"
+                                 class="avatar-circle">
 
-                    <input type="file"
-                           id="avatarInput"
-                           name="imagenFile"
-                           accept="image/*"
-                           onchange="cargarAvatar(event)"
-                           hidden>
+                            <input type="file"
+                                   id="avatarInput"
+                                   name="imagenFile"
+                                   accept="image/*"
+                                   onchange="cargarAvatar(event)"
+                                   hidden>
 
-                    <label for="avatarInput" class="avatar-btn">
-                        <i class="fas fa-camera"></i>
-                    </label>
+                            <label for="avatarInput" class="avatar-btn">
+                                <i class="fas fa-camera"></i>
+                            </label>
+                        </div>
+
+                        <!-- Cédula -->
+                        <div class="mb-3 texto-entrada">
+                            <label for="cedula" class="form-label" th:text="#{usuario.cedula}"></label>
+                            <input type="text" th:field="*{cedula}" class="form-control " id="cedula" required>
+                            <div class="text-danger" th:if="${#fields.hasErrors('cedula')}" th:errors="*{cedula}"></div>
+                        </div>
+
+                        <!-- Nombre completo -->
+                        <div class="mb-3 texto-entrada">
+                            <label for="nombreCompleto" class="form-label" th:text="#{usuario.nombrecompleto}"></label>
+                            <input type="text" th:field="*{nombreCompleto}" class="form-control " id="nombreCompleto" required>
+                            <div class="text-danger" th:if="${#fields.hasErrors('nombreCompleto')}" th:errors="*{nombreCompleto}"></div>
+                        </div>
+
+                        <!-- Correo -->
+                        <div class="mb-3 texto-entrada">
+                            <label for="correo" class="form-label" th:text="#{usuario.correo}"></label>
+                            <input type="email" th:field="*{correo}" class="form-control " id="correo" required>
+                            <div class="text-danger" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></div>
+                        </div>
+
+                        <!-- Contraseña -->
+                        <div class="mb-3 texto-entrada">
+                            <label for="contrasena" class="form-label" th:text="#{usuario.contrasena}"></label>
+                            <input type="password" th:field="*{contrasena}" class="form-control " id="contrasena" required>
+                            <div class="text-danger" th:if="${#fields.hasErrors('contrasena')}" th:errors="*{contrasena}"></div>
+                        </div>
+
+                        <!-- Botones -->
+                        <div class="d-flex justify-content-between mt-4">
+                            <a th:href="@{/}" class="btn btn-outline-secondary" th:text="#{boton.atras}">Atrás</a>
+                            <button type="submit" class="btn btn-siguiente" th:text="#{boton.siguiente}">Siguiente</button>
+                        </div>
+
+                    </form>
                 </div>
-
-                <!-- Cédula -->
-                <div class="mb-3 texto-entrada">
-                    <label for="cedula" class="form-label" th:text="#{usuario.cedula}"></label>
-                    <input type="text" th:field="*{cedula}" class="form-control " id="cedula" required>
-                    <div class="text-danger" th:if="${#fields.hasErrors('cedula')}" th:errors="*{cedula}"></div>
-                </div>
-
-                <!-- Nombre completo -->
-                <div class="mb-3 texto-entrada">
-                    <label for="nombreCompleto" class="form-label" th:text="#{usuario.nombrecompleto}"></label>
-                    <input type="text" th:field="*{nombreCompleto}" class="form-control " id="nombreCompleto" required>
-                    <div class="text-danger" th:if="${#fields.hasErrors('nombreCompleto')}" th:errors="*{nombreCompleto}"></div>
-                </div>
-
-                <!-- Correo -->
-                <div class="mb-3 texto-entrada">
-                    <label for="correo" class="form-label" th:text="#{usuario.correo}"></label>
-                    <input type="email" th:field="*{correo}" class="form-control " id="correo" required>
-                    <div class="text-danger" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></div>
-                </div>
-
-                <!-- Contraseña -->
-                <div class="mb-3 texto-entrada">
-                    <label for="contrasena" class="form-label" th:text="#{usuario.contrasena}"></label>
-                    <input type="password" th:field="*{contrasena}" class="form-control " id="contrasena" required>
-                    <div class="text-danger" th:if="${#fields.hasErrors('contrasena')}" th:errors="*{contrasena}"></div>
-                </div>
-
-                <!-- Botones -->
-                <div class="d-flex justify-content-between mt-4">
-                    <a th:href="@{/}" class="btn btn-outline-secondary" th:text="#{boton.atras}">Atrás</a>
-                    <button type="submit" class="btn btn-siguiente" th:text="#{boton.siguiente}">Siguiente</button>
-                </div>
-
-            </form>
+            </main>
         </div>
-    </main>
-</div>
 
 
 
@@ -114,28 +114,41 @@
     <main class="container my-5">
         <h2 class="text-center mb-4" th:text="#{usuario.titulo.login}">Iniciar Sesión</h2>
 
-        <div class="p-4 rounded-4 registro-container mx-auto" style="max-width: 450px;">
+        <div class="p-4 rounded-4 shadow registro-container mx-auto bg-white" style="max-width: 420px;">
+
             <!-- Mensaje de error -->
             <div th:if="${param.error}" class="alert alert-danger text-center" role="alert">
                 <p th:text="#{usuario.login.error}">Credenciales inválidas</p>
             </div>
 
+            <!-- Mensaje de cierre de sesión -->
+            <div th:if="${param.logout}" class="alert alert-success text-center" role="alert">
+                <p th:text="#{usuario.logout.exito}">Sesión cerrada correctamente</p>
+            </div>
+
             <form th:action="@{/login}" method="post">
+
                 <!-- Correo -->
                 <div class="mb-3">
                     <label for="correo" class="form-label" th:text="#{usuario.correo}">Correo</label>
-                    <input type="email" class="form-control campo-entrada" id="correo" name="username" required>
+                    <input type="email" class="form-control" id="correo" name="username" required autocomplete="email">
                 </div>
 
                 <!-- Contraseña -->
                 <div class="mb-3">
                     <label for="contrasena" class="form-label" th:text="#{usuario.contrasena}">Contraseña</label>
-                    <input type="password" class="form-control campo-entrada" id="contrasena" name="password" required>
+                    <input type="password" class="form-control" id="contrasena" name="password" required autocomplete="current-password">
                 </div>
 
-                <!-- Botón iniciar sesión -->
+                <!-- Botón -->
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-primary" th:text="#{usuario.boton.login}">Ingresar</button>
+                    <button type="submit" class="btn btn-siguiente" th:text="#{usuario.boton.login}">Ingresar</button>
+                </div>
+
+                <!-- Enlace a registro -->
+                <div class="text-center mt-3">
+                    <p th:text="#{usuario.no.tiene.cuenta}">¿No tienes cuenta?</p>
+                    <a th:href="@{/usuario/registro}" th:text="#{usuario.enlace.registro}">Regístrate aquí</a>
                 </div>
             </form>
         </div>

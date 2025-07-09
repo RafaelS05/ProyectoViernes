@@ -1,31 +1,28 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-    <head th:replace="~{layout/plantilla :: head}"></head>
+<head th:replace="~{layout/plantilla :: head}"></head>
 
-    <body>
+<body>
 
-        <header th:replace="~{layout/plantilla :: header}"></header>
+    <header th:replace="~{layout/plantilla :: header}"></header>
 
-        <main>
+    <main>
+        <div th:replace="~{layout/fragmentos :: seccion-hero}"></div>
+        <div th:replace="~{layout/fragmentos :: iconos-beneficios}"></div>
+        <div th:replace="~{layout/fragmentos :: funcionalidades}"></div>
+        <div th:replace="~{layout/fragmentos :: llamado-accion}"></div>
+    </main>
 
-            <div th:replace="~{layout/fragmentos :: seccion-hero}"></div>
+    <footer th:replace="~{layout/plantilla :: footer}"></footer>
 
-            <div th:replace="~{layout/fragmentos :: iconos-beneficios}"></div>
+    <script th:src="@{/js/rutinas.js}"></script>
 
-            <div th:replace="~{layout/fragmentos :: funcionalidades}"></div>
-
-            <div th:replace="~{layout/fragmentos :: llamado-accion}"></div>
-
-        </main>
-
-        <footer th:replace="~{layout/plantilla :: footer}"></footer>
-
-        <script th:src="@{/js/rutinas.js}"></script>
-
-    </body>
+</body>
 </html>
+
 
 
 
