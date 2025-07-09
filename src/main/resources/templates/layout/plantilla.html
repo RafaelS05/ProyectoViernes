@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+    <head th:fragment="head">
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>SIEM Contabilidad</title>
+
+                <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+                <link th:href="@{/webjars/font-awesome/css/all.min.css}" rel="stylesheet" />
+                <link rel="stylesheet" th:href="@{/css/style.css}" />
+
+                <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+                <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+                </head>
+
+                <body>
+
+                    <header th:fragment="header">
+                        <nav class="navbar navbar-expand-lg navbar-light shadow-sm px-4">
+                            <div class="d-flex flex-column align-items-center me-4">
+                                <a th:href="@{/}">
+                                    <img src="/img/logo.png" alt="Logo" height="60">
+                                </a>
+
+                                <span class="fw-bold text-dark small">SIEM Contabilidad</span>
+                            </div>
+
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+
+                            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                                <ul class="navbar-nav align-items-center">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="serviciosDropdown" role="button" data-bs-toggle="dropdown" th:text="#{header.servicios}">Servicios</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" th:href="@{/servicios/facturacion}">Facturación</a></li>
+                                            <li><a class="dropdown-item" th:href="@{/servicios/contabilidad}">Contabilidad</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link" th:href="@{/planes}" th:text="#{header.planes}">Planes</a></li>
+                                    <li class="nav-item"><a class="nav-link" th:href="@{/contacto}" th:text="#{header.contacto}">Contacto</a></li>
+                                    <li class="nav-item"><a class="btn btn-salmon me-2" th:href="@{/pyme/mi-pyme}" th:text="#{header.miPyme}">Mi PYME</a></li>
+                                    <li class="nav-item"><a class="btn btn-salmon me-2" th:href="@{/usuario/registro}" th:text="#{header.registro}">Registro</a></li>
+                                    <li class="nav-item"><a class="btn btn-salmon me-2" th:href="@{/login}" th:text="#{header.inicioGratis}">Inicio Gratis</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </header>
+
+
+                    <footer th:fragment="footer" class="bg-light text-center text-muted py-0 mt-5">
+                        <hr class="m-0" style="border-top: 2px solid #dee2e6;" />
+                        <div class="container py-4">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h6 th:text="#{footer.productos}">Productos</h6>
+                                    <a th:href="@{/productos/software}" class="d-block text-muted">Software</a>
+                                    <a th:href="@{/productos/facturacion}" class="d-block text-muted">Facturación electrónica</a>
+                                </div>
+                                <div class="col-md-4">
+                                    <h6 th:text="#{footer.educacion}">Educación</h6>
+                                    <a th:href="@{/blog}" class="d-block text-muted">Blog</a>
+                                    <a th:href="@{/academia}" class="d-block text-muted">Academia</a>
+                                    <a th:href="@{/ayuda}" class="d-block text-muted">Ayuda</a>
+                                </div>
+                                <div class="col-md-4">
+                                    <h6 th:text="#{footer.enlaces}">Enlaces útiles</h6>
+                                    <a th:href="@{/contacto}" class="d-block text-muted">Contacto</a>
+                                    <a th:href="@{/trabajo}" class="d-block text-muted">Trabajá con nosotros</a>
+                                    <div class="mt-2">
+                                        <a href="https://facebook.com" target="_blank" class="text-muted me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                                        <a href="https://instagram.com" target="_blank" class="text-muted me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                                        <a href="mailto:info@siemcontabilidad.com" class="text-muted"><i class="fas fa-envelope fa-lg"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                                <p class="mb-0" th:text="#{footer.derechos}">COPYRIGHT © 2025 SIEMcontabilidad S.A.</p>
+                        </div>
+                    </footer>
+
+                    <script th:src="@{/js/rutinas.js}"></script>
+
+                </body>
+                </html>
+
+

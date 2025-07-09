@@ -1,0 +1,151 @@
+.seccion-hero {
+    background: linear-gradient(to bottom, white 0%, #008B8B 100%);
+}
+.navbar{
+    background: linear-gradient(to top, white, #adc7cb);
+}
+
+.btn-salmon {
+    background-color: #E9967A;
+    border-color: #E9967A;
+    color: white;
+}
+
+.btn-salmon:hover {
+    background-color: #FFA07A;
+    border-color: #fab87f;
+}
+
+.btn-siguiente {
+    background-color: #7f8587;
+    border-color: #7f8587;
+    color: white;
+}
+
+.btn-siguiente:hover {
+    background-color: #cfcfcf;
+    border-color: #7f8587;
+}
+
+.seccion-funcionalidades {
+    background: linear-gradient(to top, white, #adc7cb);
+}
+
+
+/* Estilo base */
+.modo-bn-toggle {
+  width: 50px;
+  height: 120px;
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.modo-bn-toggle-inner {
+  position: absolute;
+  width: 100%;
+  height: 240px;
+  top: 0;
+  left: 0;
+  transition: transform 0.4s ease-in-out;
+}
+
+.modo-bn-toggle.on .modo-bn-toggle-inner {
+  transform: translateY(0);
+}
+
+.modo-bn-toggle.off .modo-bn-toggle-inner {
+  transform: translateY(-120px);
+}
+
+.modo-superior {
+  height: 120px;
+  background-color: #1d1d1d;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modo-inferior {
+  height: 120px;
+  background-color: #d3d3d3;
+  color: black;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.iconos-beneficios i {
+    color: #E9967A; 
+    font-size: 2rem;
+}
+
+
+.seccion-llamado {
+    background: linear-gradient(to bottom, white, #adc7cb);
+}
+
+.iconos-beneficios{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+
+
+
+/* Cambia el color de fondo de los inputs del formulario de usuario */
+.registro-container input.form-control {
+    background-color: #fff7f0; /* color melón claro */
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto al enfocar */
+.registro-container input.form-control:focus {
+    background-color: #ffe5d0; /* un poco más intenso al enfocar */
+    border-color: #ff9966;
+    box-shadow: 0 0 5px rgba(255, 153, 102, 0.5);
+}
+
+.texto-entrada{
+    width: 60%;              /* controla el ancho de cada input */
+    margin: 0 auto; 
+}
+
+.campo-entrada {
+    width: 60%;              /* controla el ancho de cada input */
+    margin: 0 auto;          /* centra horizontalmente */
+    background-color: #fffef5; /* opcional: color más suave */
+}
+
+
+.registro-container{
+    background: linear-gradient(to bottom, white 0%, #E9967A);
+   
+}
+
+.plataformas-externas {
+    background: linear-gradient(to bottom, white 0%, #008B8B 100%);
+
+}
+
+.plataformas-externas i {
+    transition: transform 0.2s ease-in-out;
+}
+
+.plataformas-externas i:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+

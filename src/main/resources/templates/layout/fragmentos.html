@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head></head>
+    <body>
+
+        <!-- Fragmento: Sección Hero -->
+        <div th:fragment="seccion-hero">
+            <section class="seccion-hero py-0">
+                <div class="container-fluid px-0">
+                    <div class="row g-0 align-items-stretch">
+                        <div class="col-md-6 d-flex flex-column justify-content-center align-items-center text-center text-md-start p-4">
+                            <div class="p-4 my-4 mx-auto text-center" style="max-width: 90%;">
+                                <h5 class="text-muted mb-2" th:text="#{index.sistema}"></h5>
+                                <h2 class="mb-2"><strong th:text="#{index.titulo}"></strong></h2>
+                                <p th:text="#{index.descripcion}"></p>
+                            </div>
+                            <div class="text-center mt-2">
+                                <a href="#" class="btn btn-salmon me-2 mb-2" th:text="#{index.boton.empezar}"></a>
+                                <a href="#" class="btn btn-salmon mb-2" th:text="#{index.boton.planes}"></a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 d-flex align-items-stretch">
+                            <div id="carouselPlanes" class="carousel slide w-100">
+                                <div class="carousel-inner h-100">
+                                    <div class="carousel-item active h-100">
+                                        <img src="/img/plan-intro.png" class="d-block w-100 h-100 object-fit-cover" alt="Plan 1">
+                                    </div>
+                                    <div class="carousel-item h-100">
+                                        <img src="/img/plan-pyme.png" class="d-block w-100 h-100 object-fit-cover" alt="Plan 2">
+                                    </div>
+                                    <div class="carousel-item h-100">
+                                        <img src="/img/plan-pro.png" class="d-block w-100 h-100 object-fit-cover" alt="Plan 3">
+                                    </div>
+                                    <div class="carousel-item h-100">
+                                        <img src="/img/plan-plus.png" class="d-block w-100 h-100 object-fit-cover" alt="Plan 4">
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselPlanes" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" style="filter: invert(1);"></span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselPlanes" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" style="filter: invert(1);"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Fragmento: Iconos Beneficios -->
+        <div th:fragment="iconos-beneficios">
+            <section class="container text-center iconos-beneficios">
+                <div class="row justify-content-center g-4 align-items-center">
+                    <div class="col-md-2 d-flex flex-column justify-content-center align-items-center">
+                        <i class="fas fa-cloud fa-2x mb-2"></i>
+                        <p th:text="#{index.nube}"></p>
+                    </div>
+                    <div class="col-md-2 d-flex flex-column justify-content-center align-items-center">
+                        <i class="fas fa-headphones fa-2x mb-2"></i>
+                        <p th:text="#{index.soporte}"></p>
+                    </div>
+                    <div class="col-md-2 d-flex flex-column justify-content-center align-items-center">
+                        <div id="bn-toggle" class="modo-bn-toggle on" onclick="toggleBN()">
+                            <div class="modo-bn-toggle-inner">
+                                <div class="modo-superior" id="modo-estado">on</div>
+                                <div class="modo-inferior">off</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 d-flex flex-column justify-content-center align-items-center">
+                        <i class="fas fa-circle-check fa-2x mb-2"></i>
+                        <p th:text="#{index.validacion}"></p>
+                    </div>
+                    <div class="col-md-2 d-flex flex-column justify-content-center align-items-center">
+                        <i class="fas fa-calendar-alt fa-2x mb-2"></i>
+                        <p th:text="#{index.planes_mensuales}"></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Fragmento: Funcionalidades -->
+        <div th:fragment="funcionalidades">
+            <section class="container-fluid bg-light p-4 seccion-funcionalidades">
+                <h4 class="text-center mb-4" th:text="#{index.funcionalidades.titulo}"></h4>
+                <div class="row row-cols-2 row-cols-md-3 g-4 text-center">
+                    <div class="col"><i class="fas fa-file-invoice"></i><p th:text="#{index.funcion.facturacion}"></p></div>
+                    <div class="col"><i class="fas fa-address-book"></i><p th:text="#{index.funcion.contactos}"></p></div>
+                    <div class="col"><i class="fas fa-book"></i><p th:text="#{index.funcion.contabilidad}"></p></div>
+                    <div class="col"><i class="fas fa-laptop-code"></i><p th:text="#{index.funcion.cursos}"></p></div>
+                    <div class="col"><i class="fas fa-envelope"></i><p th:text="#{index.funcion.buzon}"></p></div>
+                    <div class="col"><i class="fas fa-chart-line"></i><p th:text="#{index.funcion.reportes}"></p></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Fragmento: Llamado a la acción -->
+        <div th:fragment="llamado-accion">
+            <section class="container-fluid bg-light p-4 seccion-llamado">
+                <div class="row align-items-center">
+                    <div class="col-md-6 d-flex flex-column justify-content-center align-items-center text-center p-4">
+                        <div class="p-4 my-4 mx-auto text-center">
+                            <h5 class="mb-2" th:text="#{index.factura.rapido}"></h5>
+                            <p class="mb-3" th:text="#{index.factura.empezar}"></p>
+                            <a href="#" class="btn btn-salmon" th:text="#{index.boton.facturar}"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 th:text="#{index.video.titulo}"></h5>
+                        <iframe width="100%" height="350"
+                                src="https://www.youtube.com/embed/88xecPc0dhM"
+                                title="Video SIEM"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </body>
+</html>
