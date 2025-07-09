@@ -103,9 +103,8 @@
 
 
 
-/* Cambia el color de fondo de los inputs del formulario de usuario */
 .registro-container input.form-control {
-    background-color: #fff7f0; /* color melón claro */
+    background-color: #fff7f0; 
     border: 1px solid #ccc;
     padding: 0.5rem;
     transition: background-color 0.3s ease;
@@ -113,21 +112,16 @@
 
 /* Efecto al enfocar */
 .registro-container input.form-control:focus {
-    background-color: #ffe5d0; /* un poco más intenso al enfocar */
+    background-color: #ffe5d0; 
     border-color: #ff9966;
     box-shadow: 0 0 5px rgba(255, 153, 102, 0.5);
 }
 
 .texto-entrada{
-    width: 60%;              /* controla el ancho de cada input */
+    width: 60%;              
     margin: 0 auto; 
 }
 
-.campo-entrada {
-    width: 60%;              /* controla el ancho de cada input */
-    margin: 0 auto;          /* centra horizontalmente */
-    background-color: #fffef5; /* opcional: color más suave */
-}
 
 
 .registro-container{
@@ -147,5 +141,41 @@
 .plataformas-externas i:hover {
     transform: scale(1.2);
     cursor: pointer;
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 1.5rem auto;
+}
+
+.avatar-circle {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.avatar-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    border-radius: 50%;
+    padding: 6px;
+    cursor: pointer;
+    box-shadow: 0 0 3px rgba(0,0,0,0.3);
+}
+
+.avatar-btn:hover {
+    background: #f0f0f0;
+}
+
+.avatar-btn i {
+    font-size: 16px;
+    color: #000;
 }
 

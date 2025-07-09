@@ -36,6 +36,9 @@ public class Pyme {
     @Column(name = "Telefono_empresarial")
     private String telefonoEmpresarial;
 
+    @Column(name = "Imagen_Pyme") 
+    private String imagenPyme; 
+
     @Column(name = "Fecha_creacion", updatable = false)
     private LocalDateTime fechaCreacion;
 

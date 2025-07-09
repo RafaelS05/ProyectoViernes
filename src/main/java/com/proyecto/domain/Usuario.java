@@ -31,6 +31,9 @@ public class Usuario {
     @NotBlank(message = "{usuario.contrasena.notblank}")
     private String contrasena;
 
+    @Column(name = "Imagen_Perfil", length = 1024)
+    private String imagenPerfil;
+
     @Column(name = "Fecha_registro", updatable = false)
     private LocalDateTime fechaRegistro;
 

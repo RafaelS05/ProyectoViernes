@@ -37,5 +37,13 @@ public class UsuarioService {
             return false;
         }
     }
-}
 
+    public boolean existeCedula(String cedula) {
+        return usuarioRepository.existsById(cedula);
+    }
+
+    public Usuario getUsuarioPorCorreo(String correo) {
+        return usuarioRepository.findByCorreo(correo);
+    }
+
+}
