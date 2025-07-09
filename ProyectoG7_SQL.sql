@@ -2,6 +2,8 @@ CREATE DATABASE IF NOT EXISTS ProyectoG7;
 USE ProyectoG7;
 
 -- Tabla Usuario
+ALTER TABLE Usuario MODIFY COLUMN Imagen_Perfil VARCHAR(1024);
+
 CREATE TABLE Usuario (
     PK_Cedula VARCHAR(20) PRIMARY KEY unique,
     Nombre_Completo VARCHAR(100) NOT NULL,
@@ -11,6 +13,7 @@ CREATE TABLE Usuario (
 );
 
 -- Tabla Pyme
+ALTER TABLE Pyme MODIFY COLUMN Imagen_Pyme VARCHAR(1024);
 CREATE TABLE Pyme (
     PK_ID_Pyme INT AUTO_INCREMENT PRIMARY KEY,
     Razon_social VARCHAR(100) NOT NULL,
@@ -21,6 +24,7 @@ CREATE TABLE Pyme (
     Telefono_empresarial VARCHAR(20),
     Fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
 
 -- Tabla intermedia Usuario_Pyme
 CREATE TABLE Usuario_Pyme (
