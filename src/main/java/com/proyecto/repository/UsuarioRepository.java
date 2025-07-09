@@ -7,6 +7,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, String> {
     @Override
     boolean existsById(String cedula);
     Usuario findByCorreo(String correo);
+    Usuario findByCedula(String cedula);
+    
+    
 }
 
 

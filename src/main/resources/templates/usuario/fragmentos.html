@@ -155,6 +155,75 @@
     </main>
 </div>
 
+<div th:fragment="perfil-formulario">
+    <main class="container my-5">
+        <h2 class="text-center mb-4" th:text="#{usuario.perfil.titulo}">Mi Perfil</h2>
+
+        <!-- Botón editar -->
+        <div class="text-end mb-3">
+            <button class="btn btn-outline-secondary" id="btnEditarPerfil" onclick="mostrarFormulario()">
+                <i class="fas fa-pen"></i> Editar
+            </button>
+        </div>
+
+        <!-- Vista solo lectura -->
+        <div id="vistaPerfil" class="p-4 rounded-4 registro-container mx-auto" style="max-width: 650px;">
+            <div class="text-center mb-4">
+                <img th:src="${usuario.imagenPerfil != null} ? ${usuario.imagenPerfil} : @{/img/default-avatar.jpg}"
+                     alt="avatar"
+                     class="avatar-circle">
+            </div>
+            <p><strong th:text="#{usuario.cedula}">Cédula:</strong> <span th:text="${usuario.cedula}">123</span></p>
+            <p><strong th:text="#{usuario.nombrecompleto}">Nombre:</strong> <span th:text="${usuario.nombreCompleto}">Juan Pérez</span></p>
+            <p><strong th:text="#{usuario.correo}">Correo:</strong> <span th:text="${usuario.correo}">correo@ejemplo.com</span></p>
+        </div>
+
+        <!-- Formulario de edición -->
+        <div id="formularioPerfil" class="p-4 rounded-4 registro-container mx-auto" style="max-width: 650px; display: none;">
+            <form th:action="@{/usuario/perfil/guardar}" th:object="${usuario}" method="post" enctype="multipart/form-data" novalidate>
+
+                <!-- Imagen -->
+                <div class="avatar-wrapper text-center mb-4">
+                    <img id="avatarPreview"
+                         th:src="${usuario.imagenPerfil != null} ? ${usuario.imagenPerfil} : @{/img/default-avatar.jpg}"
+                         alt="avatar"
+                         class="avatar-circle">
+                    <input type="file" id="avatarInput" name="imagenFile" accept="image/*" onchange="cargarAvatar(event)" hidden>
+                    <label for="avatarInput" class="avatar-btn">
+                        <i class="fas fa-camera"></i>
+                    </label>
+                </div>
+
+                <p class="texto-entrada"><strong th:text="#{usuario.cedula} "></strong><span th:text="|  ${usuario.cedula}|"></span></p>
+                <p class="cedula.editar" th:text="#{mensaje.cedula.editar}"></p>
+                <!-- Nombre -->
+                <div class="mb-3 texto-entrada">
+                    <label for="nombreCompleto" class="form-label" th:text="#{usuario.nombrecompleto}">Nombre Completo</label>
+                    <input type="text" th:field="*{nombreCompleto}" class="form-control campo-entrada" id="nombreCompleto" required>
+                </div>
+
+                <!-- Correo -->
+                <div class="mb-3 texto-entrada">
+                    <label for="correo" class="form-label" th:text="#{usuario.correo}">Correo</label>
+                    <input type="email" th:field="*{correo}" class="form-control campo-entrada" id="correo" required>
+                </div>
+
+                <!-- Contraseña -->
+                <div class="mb-3 texto-entrada">
+                    <label for="contrasena" class="form-label" th:text="#{usuario.contrasena}">Contraseña</label>
+                    <input type="password" th:field="*{contrasena}" class="form-control campo-entrada" id="contrasena" placeholder="Dejar en blanco para mantener actual">
+                </div>
+
+                <!-- Botones -->
+                <div class="d-flex justify-content-end mt-4 gap-2">
+                    <button type="submit" class="btn btn-primary" th:text="#{boton.guardar}">Guardar cambios</button>
+                    <button type="button" class="btn btn-secondary" onclick="cancelarEdicion()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</div>
+
 
 </body>
 </html>

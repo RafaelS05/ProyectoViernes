@@ -45,5 +45,9 @@ public class UsuarioService {
     public Usuario getUsuarioPorCorreo(String correo) {
         return usuarioRepository.findByCorreo(correo);
     }
+    public Usuario getUsuarioPorCedula(String cedula){
+        return usuarioRepository.findByCedula(cedula);
+    }
+
 
 }

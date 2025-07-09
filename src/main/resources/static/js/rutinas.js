@@ -22,19 +22,19 @@ estiloBN.innerHTML = `
 `;
 document.head.appendChild(estiloBN);
 
- function vistaPrevia(event) {
-        const input = event.target;
-        const img = document.getElementById('imagenPreview');
+function vistaPrevia(event) {
+    const input = event.target;
+    const img = document.getElementById('imagenPreview');
 
-        if (input.files && input.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                img.src = e.target.result;
-                img.style.display = 'block';
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            img.src = e.target.result;
+            img.style.display = 'block';
+        };
+        reader.readAsDataURL(input.files[0]);
     }
+}
 
 function cargarAvatar(event) {
     const input = event.target;
@@ -47,5 +47,18 @@ function cargarAvatar(event) {
         };
         reader.readAsDataURL(input.files[0]);
     }
+}
+
+
+function mostrarFormulario() {
+    document.getElementById("vistaPerfil").style.display = "none";
+    document.getElementById("formularioPerfil").style.display = "block";
+    document.getElementById("btnEditarPerfil").style.display = "none";
+}
+
+function cancelarEdicion() {
+    document.getElementById("formularioPerfil").style.display = "none";
+    document.getElementById("vistaPerfil").style.display = "block";
+    document.getElementById("btnEditarPerfil").style.display = "inline-block";
 }
 

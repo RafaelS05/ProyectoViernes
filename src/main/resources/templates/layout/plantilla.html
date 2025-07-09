@@ -20,20 +20,24 @@
 
                     <header th:fragment="header">
                         <nav class="navbar navbar-expand-lg navbar-light shadow-sm px-4">
+                            <!-- Logo y nombre -->
                             <div class="d-flex flex-column align-items-center me-4">
                                 <a th:href="@{/}">
                                     <img src="/img/logo.png" alt="Logo" height="60">
                                 </a>
-
                                 <span class="fw-bold text-dark small">SIEM Contabilidad</span>
                             </div>
 
+                            <!-- Botón hamburguesa -->
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
 
+                            <!-- Menú -->
                             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                                 <ul class="navbar-nav align-items-center">
+
+                                    <!-- Menú siempre visible -->
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="serviciosDropdown" role="button" data-bs-toggle="dropdown" th:text="#{header.servicios}">Servicios</a>
                                         <ul class="dropdown-menu">
@@ -43,13 +47,38 @@
                                     </li>
                                     <li class="nav-item"><a class="nav-link" th:href="@{/planes}" th:text="#{header.planes}">Planes</a></li>
                                     <li class="nav-item"><a class="nav-link" th:href="@{/contacto}" th:text="#{header.contacto}">Contacto</a></li>
-                                    <li class="nav-item"><a class="btn btn-salmon me-2" th:href="@{/pyme/mi-pyme}" th:text="#{header.miPyme}">Mi PYME</a></li>
-                                    <li class="nav-item"><a class="btn btn-salmon me-2" th:href="@{/usuario/registro}" th:text="#{header.registro}">Registro</a></li>
-                                    <li class="nav-item"><a class="btn btn-salmon me-2" th:href="@{/login}" th:text="#{header.inicioGratis}">Inicio Gratis</a></li>
+
+                                    <!-- Si NO ha iniciado sesión -->
+                                    <li class="nav-item" th:if="${session.usuarioLogueado == null}">
+                                        <a class="btn btn-salmon me-2" th:href="@{/usuario/registro}" th:text="#{header.registro}">Registro</a>
+                                    </li>
+                                    <li class="nav-item" th:if="${session.usuarioLogueado == null}">
+                                        <a class="btn btn-salmon me-2" th:href="@{/login}" th:text="#{header.inicioGratis}">Iniciar sesión</a>
+                                    </li>
+
+                                    <!-- Si SÍ ha iniciado sesión -->
+                                    <li class="nav-item dropdown" th:if="${session.usuarioLogueado != null}">
+                                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" data-bs-toggle="dropdown">
+                                            <img th:src="${session.usuarioLogueado.imagenPerfil != null} ? ${session.usuarioLogueado.imagenPerfil} : '/img/default-avatar.jpg'"
+                                                 class="rounded-circle me-2 imagen-usuario"
+                                                 th:onclick="|window.location.href='@{/usuario/perfil}'|"
+                                                 alt="Perfil">
+
+                                                <span th:text="${session.usuarioLogueado.nombreCompleto}">Usuario</span>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li><a class="dropdown-item" th:href="@{/usuario/perfil}">Mi Perfil</a></li>
+                                            <li><a class="dropdown-item" th:href="@{/pyme/mi-pyme}" th:text="#{header.miPyme}">Mi PYME</a></li>
+                                            <li><a class="dropdown-item" th:href="@{/logout}" th:text="#{header.logout}">Cerrar sesión</a></li>
+                                        </ul>
+                                    </li>
+
                                 </ul>
                             </div>
                         </nav>
                     </header>
+
+
 
 
                     <footer th:fragment="footer" class="bg-light text-center text-muted py-0 mt-5">

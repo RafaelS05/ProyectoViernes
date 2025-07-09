@@ -11,6 +11,22 @@
     color: white;
 }
 
+.imagen-usuario {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid black;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.imagen-usuario:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 5px #000;
+}
+
+
 .btn-salmon:hover {
     background-color: #FFA07A;
     border-color: #fab87f;
@@ -120,6 +136,12 @@
 .texto-entrada{
     width: 60%;              
     margin: 0 auto; 
+}
+
+.cedula\.editar{
+    width: 60%;              
+    margin: 0 auto; 
+    color: #ff0033
 }
 
 
