@@ -1,174 +1,175 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout/plantilla :: head}"></head>
+    <head th:replace="~{layout/plantilla :: head}"></head>
 
-<body>
-    <header th:replace="~{layout/plantilla :: header}"></header>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"></header>
 
-    <div th:fragment="formulario-registro-pyme">
-        <main class="container my-5">
-            <h2 class="text-center mb-4" th:text="#{pyme.titulo}">Mi PyME</h2>
+        <div th:fragment="formulario-registro-pyme">
+            <main class="container my-5">
+                <h2 class="text-center mb-4" th:text="#{pyme.titulo}">Mi PyME</h2>
 
-            <div th:if="${!modoEdicion}">
-                <div class="alert alert-warning text-center mb-4">
-                    <p th:text="#{pyme.sinRegistro}"></p>
-                </div>
-
-                <div class="p-4 rounded-4 registro-container mx-auto" style="max-width: 650px;">
-                    <form th:action="@{/pyme/guardar}" th:object="${pyme}" method="post" enctype="multipart/form-data" novalidate>
-                        <div class="avatar-wrapper text-center mb-4">
-                            <img id="pymePreview"
-                                 th:src="${pyme.imagenPyme != null} ? ${pyme.imagenPyme} : @{/img/default-pyme.png}"
-                                 alt="imagen-pyme" class="avatar-circle">
-                            <input type="file" id="pymeInput" name="imagenFile" accept="image/*" onchange="cargarPymeAvatar(event)" hidden>
-                            <label for="pymeInput" class="avatar-btn">
-                                <i class="fas fa-camera"></i>
-                            </label>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="cedulaJuridicaFisica" class="form-label" th:text="#{pyme.cedulaJuridicaFisica}"></label>
-                            <input type="text" class="form-control campo-entrada" id="cedulaJuridicaFisica"
-                                   th:field="*{cedulaJuridicaFisica}"
-                                   th:classappend="${#fields.hasErrors('cedulaJuridicaFisica')} ? 'is-invalid' : ''"
-                                   required>
-                            <div class="invalid-feedback" th:if="${#fields.hasErrors('cedulaJuridicaFisica')}" th:errors="*{cedulaJuridicaFisica}"></div>
-                            <div class="text-danger mt-1" th:if="${errorCedula}" th:text="${errorCedula}"></div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="razonSocial" class="form-label" th:text="#{pyme.razon}"></label>
-                            <select class="form-select campo-entrada" id="razonSocial" th:field="*{razonSocial}" required>
-                                <option th:each="razon : ${razonesSociales}" th:value="${razon.id}" th:text="${razon.nombre}"></option>
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="nombreComercial" class="form-label" th:text="#{pyme.nombreComercial}"></label>
-                            <input type="text" class="form-control campo-entrada" id="nombreComercial" th:field="*{nombreComercial}" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="actividadEconomica" class="form-label" th:text="#{pyme.actividadEconomica}"></label>
-                            <select class="form-select campo-entrada" id="actividadEconomica" th:field="*{actividadEconomica}" required>
-                                <option th:each="actividad : ${actividadesEconomicas}" th:value="${actividad.id}" th:text="${actividad.nombre}"></option>
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="direccionFisica" class="form-label" th:text="#{pyme.direccionFisica}"></label>
-                            <textarea class="form-control campo-entrada" id="direccionFisica" th:field="*{direccionFisica}" rows="2"></textarea>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="correoEmpresarial" class="form-label" th:text="#{pyme.correoEmpresarial}"></label>
-                            <input type="email" class="form-control campo-entrada" id="correoEmpresarial" th:field="*{correoEmpresarial}">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="telefonoEmpresarial" class="form-label" th:text="#{pyme.telefonoEmpresarial}"></label>
-                            <input type="text" class="form-control campo-entrada" id="telefonoEmpresarial" th:field="*{telefonoEmpresarial}">
-                        </div>
-
-                        <div class="d-flex justify-content-end mt-4 gap-2">
-                            <button type="submit" class="btn btn-primary" th:text="#{boton.guardar}"></button>
-                            <a class="btn btn-secondary" th:href="@{/}" th:text="#{boton.siguiente}"></a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <div th:if="${modoEdicion}">
-                <div class="text-end mb-3">
-                    <button class="btn btn-outline-secondary" onclick="mostrarFormulario()">
-                        <i class="fas fa-pen"></i> <span th:text="#{boton.editar}"></span>
-                    </button>
-                </div>
-
-                <div id="vistaPyme" class="p-4 rounded-4 registro-container mx-auto" style="max-width: 650px;">
-                    <div class="text-center mb-4">
-                        <img th:src="${pyme.imagenPyme != null} ? ${pyme.imagenPyme} : @{/img/default-pyme.png}"
-                             alt="logo" class="avatar-circle">
+                <div th:if="${!modoEdicion}">
+                    <div class="alert alert-warning text-center mb-4">
+                        <p th:text="#{pyme.sinRegistro}"></p>
                     </div>
-                    <p><strong th:text="#{pyme.nombreComercial}"></strong> <span th:text="${pyme.nombreComercial}"></span></p>
-                    <p class="texto-entrada">
-                        <strong th:text="#{pyme.cedulaJuridicaFisica} + ':'"></strong>
-                        <span th:text="${pyme.cedulaJuridicaFisica}"></span>
-                    </p>
-                    <p><strong th:text="#{pyme.razon}"></strong> <span th:text="${pyme.razonSocial.nombre}"></span></p>
-                    <p><strong th:text="#{pyme.actividadEconomica}"></strong> <span th:text="${pyme.actividadEconomica.nombre}"></span></p>
-                    <p><strong th:text="#{pyme.direccionFisica}"></strong> <span th:text="${pyme.direccionFisica}"></span></p>
-                    <p><strong th:text="#{pyme.correoEmpresarial}"></strong> <span th:text="${pyme.correoEmpresarial}"></span></p>
-                    <p><strong th:text="#{pyme.telefonoEmpresarial}"></strong> <span th:text="${pyme.telefonoEmpresarial}"></span></p>
+
+                    <div class="p-4 rounded-4 registro-container mx-auto" style="max-width: 650px;">
+                        <form th:action="@{/pyme/guardar}" th:object="${pyme}" method="post" enctype="multipart/form-data" novalidate>
+                            <div class="avatar-wrapper text-center mb-4">
+                                <img id="pymePreview"
+                                     th:src="${pyme.imagenPyme != null} ? ${pyme.imagenPyme} : @{/img/default-pyme.png}"
+                                     alt="imagen-pyme" class="avatar-circle">
+                                <input type="file" id="pymeInput" name="imagenFile" accept="image/*" onchange="cargarPymeAvatar(event)" hidden>
+                                <label for="pymeInput" class="avatar-btn">
+                                    <i class="fas fa-camera"></i>
+                                </label>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="cedulaJuridicaFisica" class="form-label" th:text="#{pyme.cedulaJuridicaFisica}"></label>
+                                <input type="text" class="form-control campo-entrada" id="cedulaJuridicaFisica"
+                                       th:field="*{cedulaJuridicaFisica}"
+                                       th:classappend="${#fields.hasErrors('cedulaJuridicaFisica')} ? 'is-invalid' : ''"
+                                       required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('cedulaJuridicaFisica')}" th:errors="*{cedulaJuridicaFisica}"></div>
+                                <div class="text-danger mt-1" th:if="${errorCedula}" th:text="${errorCedula}"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="razonSocial" class="form-label" th:text="#{pyme.razon}"></label>
+                                <select class="form-select campo-entrada" id="razonSocial" th:field="*{razonSocial}" required>
+                                    <option th:each="razon : ${razonesSociales}" th:value="${razon.id}" th:text="${razon.nombre}"></option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="nombreComercial" class="form-label" th:text="#{pyme.nombreComercial}"></label>
+                                <input type="text" class="form-control campo-entrada" id="nombreComercial" th:field="*{nombreComercial}" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="actividadEconomica" class="form-label" th:text="#{pyme.actividadEconomica}"></label>
+                                <select class="form-select campo-entrada" id="actividadEconomica" th:field="*{actividadEconomica}" required>
+                                    <option th:each="actividad : ${actividadesEconomicas}" th:value="${actividad.id}" th:text="${actividad.nombre}"></option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="direccionFisica" class="form-label" th:text="#{pyme.direccionFisica}"></label>
+                                <textarea class="form-control campo-entrada" id="direccionFisica" th:field="*{direccionFisica}" rows="2"></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="correoEmpresarial" class="form-label" th:text="#{pyme.correoEmpresarial}"></label>
+                                <input type="email" class="form-control campo-entrada" id="correoEmpresarial" th:field="*{correoEmpresarial}">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="telefonoEmpresarial" class="form-label" th:text="#{pyme.telefonoEmpresarial}"></label>
+                                <input type="text" class="form-control campo-entrada" id="telefonoEmpresarial" th:field="*{telefonoEmpresarial}">
+                            </div>
+
+                            <div class="d-flex justify-content-end mt-4 gap-2">
+                                <button type="submit" class="btn btn-primary" th:text="#{boton.guardar}"></button>
+                                <a class="btn btn-secondary" th:href="@{/}" th:text="#{boton.siguiente}"></a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
 
-                <div id="formularioPyme" class="p-4 rounded-4 registro-container mx-auto mt-4" style="max-width: 650px; display: none;">
-                    <form th:action="@{/pyme/guardar}" th:object="${pyme}" method="post" enctype="multipart/form-data" novalidate>
-                        <input type="hidden" th:field="*{id}" />
+                <div th:if="${modoEdicion}">
+                    <div class="text-end mb-3">
+                        <button class="btn btn-outline-secondary" onclick="mostrarFormulario()">
+                            <i class="fas fa-pen"></i> <span th:text="#{boton.editar}"></span>
+                        </button>
+                    </div>
 
-                        <div class="avatar-wrapper text-center mb-4">
-                            <img id="pymePreviewEditar"
-                                 th:src="${pyme.imagenPyme != null} ? ${pyme.imagenPyme} : @{/img/default-pyme.png}"
-                                 alt="imagen-pyme" class="avatar-circle">
-                            <input type="file" id="pymeInputEditar" name="imagenFile" accept="image/*" onchange="cargarPymeAvatar(event)" hidden>
-                            <label for="pymeInputEditar" class="avatar-btn">
-                                <i class="fas fa-camera"></i>
-                            </label>
+                    <div id="vistaPyme" class="p-4 rounded-4 registro-container mx-auto" style="max-width: 650px;">
+                        <div class="text-center mb-4">
+                            <img th:src="${pyme.imagenPyme != null} ? ${pyme.imagenPyme} : @{/img/default-pyme.png}"
+                                 alt="logo" class="avatar-circle">
                         </div>
-
+                        <p><strong th:text="#{pyme.nombreComercial}"></strong> <span th:text="${pyme.nombreComercial}"></span></p>
                         <p class="texto-entrada">
                             <strong th:text="#{pyme.cedulaJuridicaFisica} + ':'"></strong>
                             <span th:text="${pyme.cedulaJuridicaFisica}"></span>
                         </p>
-                        <p class="cedula.editar" th:text="#{mensaje.cedula.editar}"></p>
-                        <input type="hidden" th:field="*{cedulaJuridicaFisica}" />
+                        <p><strong th:text="#{pyme.razon}"></strong> <span th:text="${pyme.razonSocial.nombre}"></span></p>
+                        <p><strong th:text="#{pyme.actividadEconomica}"></strong> <span th:text="${pyme.actividadEconomica.nombre}"></span></p>
+                        <p><strong th:text="#{pyme.direccionFisica}"></strong> <span th:text="${pyme.direccionFisica}"></span></p>
+                        <p><strong th:text="#{pyme.correoEmpresarial}"></strong> <span th:text="${pyme.correoEmpresarial}"></span></p>
+                        <p><strong th:text="#{pyme.telefonoEmpresarial}"></strong> <span th:text="${pyme.telefonoEmpresarial}"></span></p>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="razonSocialEditar" class="form-label" th:text="#{pyme.razon}"></label>
-                            <select class="form-select campo-entrada" id="razonSocialEditar" th:field="*{razonSocial}" required>
-                                <option th:each="razon : ${razonesSociales}" th:value="${razon.id}" th:text="${razon.nombre}"></option>
-                            </select>
-                        </div>
+                    <div id="formularioPyme" class="p-4 rounded-4 registro-container mx-auto mt-4" style="max-width: 650px; display: none;">
+                        <form th:action="@{/pyme/guardar}" th:object="${pyme}" method="post" enctype="multipart/form-data" novalidate>
+                            <input type="hidden" th:field="*{id}" />
 
-                        <div class="mb-3">
-                            <label for="nombreComercialEditar" class="form-label" th:text="#{pyme.nombreComercial}"></label>
-                            <input type="text" class="form-control campo-entrada" id="nombreComercialEditar" th:field="*{nombreComercial}" required>
-                        </div>
+                            <div class="avatar-wrapper text-center mb-4">
+                                <img id="avatarPreview"
+                                     th:src="${pyme.imagenPyme != null} ? ${pyme.imagenPyme} : @{/img/default-pyme.png}"
+                                     alt="avatar"
+                                     class="avatar-circle">
+                                <input type="file" id="avatarInput" name="imagenFile" accept="image/*" onchange="cargarAvatar(event)" hidden>
+                                <label for="avatarInput" class="avatar-btn">
+                                    <i class="fas fa-camera"></i>
+                                </label>
+                            </div>
 
-                        <div class="mb-3">
-                            <label for="actividadEconomicaEditar" class="form-label" th:text="#{pyme.actividadEconomica}"></label>
-                            <select class="form-select campo-entrada" id="actividadEconomicaEditar" th:field="*{actividadEconomica}" required>
-                                <option th:each="actividad : ${actividadesEconomicas}" th:value="${actividad.id}" th:text="${actividad.nombre}"></option>
-                            </select>
-                        </div>
+                            <p class="texto-entrada">
+                                <strong th:text="#{pyme.cedulaJuridicaFisica} + ':'"></strong>
+                                <span th:text="${pyme.cedulaJuridicaFisica}"></span>
+                            </p>
+                            <p class="cedula.editar" th:text="#{mensaje.cedula.editar}"></p>
+                            <input type="hidden" th:field="*{cedulaJuridicaFisica}" />
 
-                        <div class="mb-3">
-                            <label for="direccionFisicaEditar" class="form-label" th:text="#{pyme.direccionFisica}"></label>
-                            <textarea class="form-control campo-entrada" id="direccionFisicaEditar" th:field="*{direccionFisica}" rows="2"></textarea>
-                        </div>
+                            <div class="mb-3">
+                                <label for="razonSocialEditar" class="form-label" th:text="#{pyme.razon}"></label>
+                                <select class="form-select campo-entrada" id="razonSocialEditar" th:field="*{razonSocial}" required>
+                                    <option th:each="razon : ${razonesSociales}" th:value="${razon.id}" th:text="${razon.nombre}"></option>
+                                </select>
+                            </div>
 
-                        <div class="mb-3">
-                            <label for="correoEmpresarialEditar" class="form-label" th:text="#{pyme.correoEmpresarial}"></label>
-                            <input type="email" class="form-control campo-entrada" id="correoEmpresarialEditar" th:field="*{correoEmpresarial}">
-                        </div>
+                            <div class="mb-3">
+                                <label for="nombreComercialEditar" class="form-label" th:text="#{pyme.nombreComercial}"></label>
+                                <input type="text" class="form-control campo-entrada" id="nombreComercialEditar" th:field="*{nombreComercial}" required>
+                            </div>
 
-                        <div class="mb-3">
-                            <label for="telefonoEmpresarialEditar" class="form-label" th:text="#{pyme.telefonoEmpresarial}"></label>
-                            <input type="text" class="form-control campo-entrada" id="telefonoEmpresarialEditar" th:field="*{telefonoEmpresarial}">
-                        </div>
+                            <div class="mb-3">
+                                <label for="actividadEconomicaEditar" class="form-label" th:text="#{pyme.actividadEconomica}"></label>
+                                <select class="form-select campo-entrada" id="actividadEconomicaEditar" th:field="*{actividadEconomica}" required>
+                                    <option th:each="actividad : ${actividadesEconomicas}" th:value="${actividad.id}" th:text="${actividad.nombre}"></option>
+                                </select>
+                            </div>
 
-                        <div class="d-flex justify-content-end mt-4 gap-2">
-                            <button type="submit" class="btn btn-primary" th:text="#{boton.guardar}"></button>
-                            <button type="button" class="btn btn-secondary" onclick="cancelarEdicion()" th:text="#{boton.cancelar}"></button>
-                        </div>
-                    </form>
+                            <div class="mb-3">
+                                <label for="direccionFisicaEditar" class="form-label" th:text="#{pyme.direccionFisica}"></label>
+                                <textarea class="form-control campo-entrada" id="direccionFisicaEditar" th:field="*{direccionFisica}" rows="2"></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="correoEmpresarialEditar" class="form-label" th:text="#{pyme.correoEmpresarial}"></label>
+                                <input type="email" class="form-control campo-entrada" id="correoEmpresarialEditar" th:field="*{correoEmpresarial}">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="telefonoEmpresarialEditar" class="form-label" th:text="#{pyme.telefonoEmpresarial}"></label>
+                                <input type="text" class="form-control campo-entrada" id="telefonoEmpresarialEditar" th:field="*{telefonoEmpresarial}">
+                            </div>
+
+                            <div class="d-flex justify-content-end mt-4 gap-2">
+                                <button type="submit" class="btn btn-primary" th:text="#{boton.guardar}"></button>
+                                <button type="button" class="btn btn-secondary" onclick="cancelarEdicion()" th:text="#{boton.cancelar}"></button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </main>
-    </div>
+            </main>
+        </div>
 
-    <footer th:replace="~{layout/plantilla :: footer}"></footer>
-    <script th:src="@{/js/rutinas.js}"></script>
-</body>
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+        <script th:src="@{/js/rutinas.js}"></script>
+    </body>
 </html>
 
