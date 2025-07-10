@@ -110,8 +110,7 @@ public class PymeController {
 
         // Imagen nueva
         if (!imagenFile.isEmpty()) {
-            long idImg = System.currentTimeMillis();
-            String urlImagen = firebaseStorageService.cargaImagen(imagenFile, "pymes", idImg);
+            String urlImagen = firebaseStorageService.cargaImagen(imagenFile, "pymes", pyme.getCedulaJuridicaFisica());
             existente.setImagenPyme(urlImagen);
         }
 

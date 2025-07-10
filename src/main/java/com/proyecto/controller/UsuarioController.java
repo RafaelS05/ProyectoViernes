@@ -56,8 +56,8 @@ public class UsuarioController {
             return "usuario/usuario";
         }
 
-        if (!imagenFile.isEmpty()) {
-            long idImg = Math.abs(usuario.getCedula().hashCode());
+        if (!imagenFile.isEmpty() && usuario.getCedula() != null && !usuario.getCedula().isBlank()) {
+            String idImg = usuario.getCedula(); // Usa la cédula como nombre único
             String urlImagen = firebaseStorageService.cargaImagen(imagenFile, "usuarios", idImg);
             usuario.setImagenPerfil(urlImagen);
         }
@@ -158,8 +158,7 @@ public class UsuarioController {
 
         // Manejar imagen
         if (!imagenFile.isEmpty()) {
-            long idImg = Math.abs(usuarioActual.getCedula().hashCode());
-            String urlImagen = firebaseStorageService.cargaImagen(imagenFile, "usuarios", idImg);
+            String urlImagen = firebaseStorageService.cargaImagen(imagenFile, "usuarios", usuarioActual.getCedula());
             usuarioActual.setImagenPerfil(urlImagen);
             hayCambios = true;
         }
