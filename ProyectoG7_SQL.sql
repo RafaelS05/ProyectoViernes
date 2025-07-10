@@ -1,6 +1,12 @@
 CREATE DATABASE IF NOT EXISTS ProyectoG7;
 USE ProyectoG7;
 
+
+CREATE USER 'usuario_proyecto'@'localhost' IDENTIFIED BY 'la_Clave';
+
+GRANT ALL PRIVILEGES ON ProyectoG7.* TO 'usuario_proyecto'@'localhost';
+
+FLUSH PRIVILEGES;
 -- Tabla Usuario
 ALTER TABLE Usuario MODIFY COLUMN Imagen_Perfil VARCHAR(1024);
 
@@ -37,4 +43,14 @@ CREATE TABLE Usuario_Pyme (
         ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (FK_ID_Pyme) REFERENCES Pyme(PK_ID_Pyme)
         ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE Factura(
+ID_Factura INT AUTO_INCREMENT PRIMARY KEY,
+FK_Cedula_Cliente VARCHAR (100) NOT NULL,
+Monto DECIMAL (10,2) NOT NULL,
+Fecha DATE NOT NULL,
+Descripcion TEXT,
+Estado_factura BOOLEAN,
+FOREIGN KEY (FK_Cedula_Cliente) REFERENCES Usuario(PK_Cedula)
 );
