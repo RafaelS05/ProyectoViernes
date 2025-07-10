@@ -68,7 +68,7 @@ public class UsuarioController {
                 "todoOk",
                 messageSource.getMessage("usuario.guardado.ok", null, locale));
 
-        return "redirect:/pyme/registro";
+        return "redirect:/pyme/mi-pyme";
     }
 
     // LOGIN FORM
@@ -91,7 +91,7 @@ public class UsuarioController {
 
         if (u != null && u.getContrasena().equals(password)) {
             session.setAttribute("usuarioLogueado", u);
-            return "redirect:/usuario/perfil";
+            return "redirect:/";
         }
 
         redirect.addAttribute("error", true);

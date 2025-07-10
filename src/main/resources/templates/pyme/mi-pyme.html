@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layout/plantilla :: head}"></head>
+
+<body>
+    <header th:replace="~{layout/plantilla :: header}"></header>
+
+    <main>
+        <div th:replace="~{pyme/fragmentos :: formulario-registro-pyme}"></div>
+    </main>
+
+    <footer th:replace="~{layout/plantilla :: footer}"></footer>
+
+    <script th:src="@{/js/rutinas.js}"></script>
+</body>
+</html>

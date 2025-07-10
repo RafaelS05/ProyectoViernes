@@ -1,15 +1,13 @@
 package com.proyecto.domain;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
-import lombok.*;
+import lombok.Data;
+
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "Usuario_Pyme")
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class UsuarioPyme {
 
     @Id
@@ -17,17 +15,16 @@ public class UsuarioPyme {
     @Column(name = "ID_Usuario_Pyme")
     private Long id;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "FK_Cedula", referencedColumnName = "PK_Cedula")
+    @ManyToOne
+    @JoinColumn(name = "FK_Cedula", nullable = false)
     private Usuario usuario;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "FK_ID_Pyme", referencedColumnName = "PK_ID_Pyme")
+    @ManyToOne
+    @JoinColumn(name = "FK_ID_Pyme", nullable = false)
     private Pyme pyme;
 
-    @Column(name = "Rol")
-    @NotBlank(message = "{usuariopyme.rol.notblank}")
-    private String rol;
+    @Column(name = "Rol", nullable = false)
+    private String rol = "Propietario";
 
     @Column(name = "Fecha_asociacion", updatable = false)
     private LocalDateTime fechaAsociacion;
@@ -37,3 +34,4 @@ public class UsuarioPyme {
         this.fechaAsociacion = LocalDateTime.now();
     }
 }
+

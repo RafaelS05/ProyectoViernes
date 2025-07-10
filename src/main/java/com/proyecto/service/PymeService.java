@@ -2,10 +2,12 @@ package com.proyecto.service;
 
 import com.proyecto.domain.Pyme;
 import com.proyecto.repository.PymeRepository;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PymeService {
@@ -14,9 +16,8 @@ public class PymeService {
     private PymeRepository pymeRepository;
 
     @Transactional(readOnly = true)
-    public Pyme getPyme(Pyme pyme) {
-        return pymeRepository.findById(pyme.getId()).orElse(null);
-
+    public Pyme getPymePorId(Long id) {
+        return pymeRepository.findById(id).orElse(null);
     }
 
     @Transactional(readOnly = true)
@@ -38,4 +39,13 @@ public class PymeService {
             return false;
         }
     }
+
+    public boolean existePorCedula(String cedula) {
+        return pymeRepository.existsByCedulaJuridicaFisica(cedula);
+    }
+    
+    public Optional<Pyme> buscarPorCedula(String cedula) {
+        return pymeRepository.findByCedulaJuridicaFisica(cedula); // <- NUEVO
+    }
+
 }

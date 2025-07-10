@@ -48,17 +48,26 @@ function cargarAvatar(event) {
         reader.readAsDataURL(input.files[0]);
     }
 }
-
-
-function mostrarFormulario() {
+function mostrarFormularioPerfil() {
     document.getElementById("vistaPerfil").style.display = "none";
     document.getElementById("formularioPerfil").style.display = "block";
     document.getElementById("btnEditarPerfil").style.display = "none";
 }
 
-function cancelarEdicion() {
+function cancelarEdicionPerfil() {
     document.getElementById("formularioPerfil").style.display = "none";
     document.getElementById("vistaPerfil").style.display = "block";
     document.getElementById("btnEditarPerfil").style.display = "inline-block";
+}
+
+
+function mostrarFormulario() {
+    document.getElementById("vistaPyme").style.display = "none";
+    document.getElementById("formularioPyme").style.display = "block";
+}
+
+function cancelarEdicion() {
+    document.getElementById("formularioPyme").style.display = "none";
+    document.getElementById("vistaPyme").style.display = "block";
 }
 

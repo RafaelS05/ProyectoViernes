@@ -1,8 +1,8 @@
 package com.proyecto.service;
 
+import com.proyecto.domain.Usuario;
 import com.proyecto.domain.UsuarioPyme;
 import com.proyecto.repository.UsuarioPymeRepository;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,13 +14,8 @@ public class UsuarioPymeService {
     private UsuarioPymeRepository usuarioPymeRepository;
 
     @Transactional(readOnly = true)
-    public UsuarioPyme getUsuarioPyme(UsuarioPyme usuarioPyme) {
-        return usuarioPymeRepository.findById(usuarioPyme.getId()).orElse(null);
-    }
-
-    @Transactional(readOnly = true)
-    public List<UsuarioPyme> getUsuarioPymes() {
-        return usuarioPymeRepository.findAll();
+    public UsuarioPyme getPorUsuario(Usuario usuario) {
+        return usuarioPymeRepository.findByUsuario(usuario);
     }
 
     @Transactional
@@ -29,13 +24,9 @@ public class UsuarioPymeService {
     }
 
     @Transactional
-    public boolean delete(UsuarioPyme usuarioPyme) {
-        try {
-            usuarioPymeRepository.delete(usuarioPyme);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+    public void delete(UsuarioPyme usuarioPyme) {
+        usuarioPymeRepository.delete(usuarioPyme);
     }
 }
+
 

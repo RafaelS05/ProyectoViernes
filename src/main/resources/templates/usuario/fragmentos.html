@@ -6,7 +6,7 @@
 
         <div th:fragment="registro-formulario">
             <main class="container my-5">
-                <h2 class="text-center mb-4" th:text="#{usuario.titulo.registro}">Crear cuenta nueva</h2>
+                <h2 class="text-center mb-4" th:text="#{usuario.titulo.registro}"></h2>
 
                 <div class="p-4 rounded-4 registro-container">
 
@@ -68,8 +68,8 @@
 
                         <!-- Botones -->
                         <div class="d-flex justify-content-between mt-4">
-                            <a th:href="@{/}" class="btn btn-outline-secondary" th:text="#{boton.atras}">Atrás</a>
-                            <button type="submit" class="btn btn-siguiente" th:text="#{boton.siguiente}">Siguiente</button>
+                            <a th:href="@{/}" class="btn btn-outline-secondary" th:text="#{boton.atras}"></a>
+                            <button type="submit" class="btn btn-siguiente" th:text="#{boton.siguiente}"></button>
                         </div>
 
                     </form>
@@ -112,43 +112,43 @@
 <!-- Fragmento: Formulario de inicio de sesión -->
 <div th:fragment="formulario-login">
     <main class="container my-5">
-        <h2 class="text-center mb-4" th:text="#{usuario.titulo.login}">Iniciar Sesión</h2>
+        <h2 class="text-center mb-4" th:text="#{usuario.titulo.login}"></h2>
 
         <div class="p-4 rounded-4 shadow registro-container mx-auto bg-white" style="max-width: 420px;">
 
             <!-- Mensaje de error -->
             <div th:if="${param.error}" class="alert alert-danger text-center" role="alert">
-                <p th:text="#{usuario.login.error}">Credenciales inválidas</p>
+                <p th:text="#{usuario.login.error}"></p>
             </div>
 
             <!-- Mensaje de cierre de sesión -->
             <div th:if="${param.logout}" class="alert alert-success text-center" role="alert">
-                <p th:text="#{usuario.logout.exito}">Sesión cerrada correctamente</p>
+                <p th:text="#{usuario.logout.exito}"></p>
             </div>
 
             <form th:action="@{/login}" method="post">
 
                 <!-- Correo -->
                 <div class="mb-3">
-                    <label for="correo" class="form-label" th:text="#{usuario.correo}">Correo</label>
+                    <label for="correo" class="form-label" th:text="#{usuario.correo}"></label>
                     <input type="email" class="form-control" id="correo" name="username" required autocomplete="email">
                 </div>
 
                 <!-- Contraseña -->
                 <div class="mb-3">
-                    <label for="contrasena" class="form-label" th:text="#{usuario.contrasena}">Contraseña</label>
+                    <label for="contrasena" class="form-label" th:text="#{usuario.contrasena}"></label>
                     <input type="password" class="form-control" id="contrasena" name="password" required autocomplete="current-password">
                 </div>
 
                 <!-- Botón -->
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-siguiente" th:text="#{usuario.boton.login}">Ingresar</button>
+                    <button type="submit" class="btn btn-siguiente" th:text="#{usuario.boton.login}"></button>
                 </div>
 
                 <!-- Enlace a registro -->
                 <div class="text-center mt-3">
-                    <p th:text="#{usuario.no.tiene.cuenta}">¿No tienes cuenta?</p>
-                    <a th:href="@{/usuario/registro}" th:text="#{usuario.enlace.registro}">Regístrate aquí</a>
+                    <p th:text="#{usuario.no.tiene.cuenta}"></p>
+                    <a th:href="@{/usuario/registro}" th:text="#{usuario.enlace.registro}"></a>
                 </div>
             </form>
         </div>
@@ -157,12 +157,12 @@
 
 <div th:fragment="perfil-formulario">
     <main class="container my-5">
-        <h2 class="text-center mb-4" th:text="#{usuario.perfil.titulo}">Mi Perfil</h2>
+        <h2 class="text-center mb-4" th:text="#{usuario.perfil.titulo}"></h2>
 
         <!-- Botón editar -->
         <div class="text-end mb-3">
-            <button class="btn btn-outline-secondary" id="btnEditarPerfil" onclick="mostrarFormulario()">
-                <i class="fas fa-pen"></i> Editar
+            <button class="btn btn-outline-secondary" id="btnEditarPerfil" onclick="mostrarFormularioPerfil()">
+                <i class="fas fa-pen"></i> <span th:text="#{boton.editar}"></span>
             </button>
         </div>
 
@@ -173,9 +173,9 @@
                      alt="avatar"
                      class="avatar-circle">
             </div>
-            <p><strong th:text="#{usuario.cedula}">Cédula:</strong> <span th:text="${usuario.cedula}">123</span></p>
-            <p><strong th:text="#{usuario.nombrecompleto}">Nombre:</strong> <span th:text="${usuario.nombreCompleto}">Juan Pérez</span></p>
-            <p><strong th:text="#{usuario.correo}">Correo:</strong> <span th:text="${usuario.correo}">correo@ejemplo.com</span></p>
+            <p><strong th:text="#{usuario.cedula}"></strong> <span th:text="${usuario.cedula}"></span></p>
+            <p><strong th:text="#{usuario.nombrecompleto}"></strong> <span th:text="${usuario.nombreCompleto}"></span></p>
+            <p><strong th:text="#{usuario.correo}"></strong> <span th:text="${usuario.correo}"></span></p>
         </div>
 
         <!-- Formulario de edición -->
@@ -194,11 +194,16 @@
                     </label>
                 </div>
 
-                <p class="texto-entrada"><strong th:text="#{usuario.cedula} "></strong><span th:text="|  ${usuario.cedula}|"></span></p>
-                <p class="cedula.editar" th:text="#{mensaje.cedula.editar}"></p>
+                <!-- Cédula solo lectura -->
+                <p class="texto-entrada">
+                    <strong th:text="#{usuario.cedula}"></strong>
+                    <span th:text="| ${usuario.cedula} |"></span>
+                </p>
+                <p class="cedula.editar text-muted fst-italic" th:text="#{mensaje.cedula.editar}">.</p>
+
                 <!-- Nombre -->
                 <div class="mb-3 texto-entrada">
-                    <label for="nombreCompleto" class="form-label" th:text="#{usuario.nombrecompleto}">Nombre Completo</label>
+                    <label for="nombreCompleto" class="form-label" th:text="#{usuario.nombrecompleto}"></label>
                     <input type="text" th:field="*{nombreCompleto}" class="form-control campo-entrada" id="nombreCompleto" required>
                 </div>
 
@@ -216,13 +221,14 @@
 
                 <!-- Botones -->
                 <div class="d-flex justify-content-end mt-4 gap-2">
-                    <button type="submit" class="btn btn-primary" th:text="#{boton.guardar}">Guardar cambios</button>
-                    <button type="button" class="btn btn-secondary" onclick="cancelarEdicion()">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" th:text="#{boton.guardar}"></button>
+                    <button type="button" class="btn btn-secondary" onclick="cancelarEdicionPerfil()" th:text="#{boton.cancelar}"></button>
                 </div>
             </form>
         </div>
     </main>
 </div>
+
 
 
 </body>
