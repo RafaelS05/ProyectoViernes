@@ -47,6 +47,13 @@
     background: linear-gradient(to top, white, #adc7cb);
 }
 
+.btn-pdf {
+    background-color: #E9967A;
+    border-color: #E9967A;
+    color: white;
+    box-shadow: 5px 5px 4px rgba(0,0,0,0.3);
+}
+
 
 /* Estilo base */
 .modo-bn-toggle {
