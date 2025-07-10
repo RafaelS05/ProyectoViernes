@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    
-    <head th:replace="~{factura/fragmentos :: head}"></head>
-    
-    
-    <body>
-        <header th:replace="~{layout/plantilla :: header}"></header>
 
-        
-        <footer th:replace="~{layout/plantilla :: footer}"></footer>
-    </body>
+<head th:replace="~{layout/plantilla :: head}"></head>
+
+<body>
+    <header th:replace="~{layout/plantilla :: header}"></header>
+
+    
+    <div th:replace="~{ayuda/fragmentos :: ayuda-videos}"></div>
+
+    <footer th:replace="~{layout/plantilla :: footer}"></footer>
+</body>
 </html>

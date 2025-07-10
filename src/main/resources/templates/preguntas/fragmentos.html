@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <!-- templates/fragmentos.html -->
+        <div th:fragment="preguntas-frecuentes">
+            <div class="container mb-5">
+                <div class="card p-4 mb-4">
+                    <h4>Preguntas Frecuentes</h4>
+
+                    <!-- Categoría: IVA -->
+                    <div class="mb-4">
+                        <h5 class="text-primary">Impuesto al Valor Agregado (IVA)</h5>
+                        <div class="accordion" id="accordionIVA">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingIVA1">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseIVA1">
+                                        ¿Qué es el IVA?
+                                    </button>
+                                </h2>
+                                <div id="collapseIVA1" class="accordion-collapse collapse show" data-bs-parent="#accordionIVA">
+                                    <div class="accordion-body">
+                                        El Impuesto al Valor Agregado (IVA) es un tributo que se aplica al consumo de bienes y servicios...
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingIVA2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseIVA2">
+                                        ¿Cómo se declara el IVA?
+                                    </button>
+                                </h2>
+                                <div id="collapseIVA2" class="accordion-collapse collapse" data-bs-parent="#accordionIVA">
+                                    <div class="accordion-body">
+                                        Debe presentarse una declaración mensual utilizando el formulario D-104, a través de ATV...
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Categoría: D-151 -->
+                    <div class="mb-4">
+                        <h5 class="text-danger">Declaración D-151</h5>
+                        <div class="accordion" id="accordionD151">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingD151_1">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseD151_1">
+                                        ¿Qué es la declaración D-151?
+                                    </button>
+                                </h2>
+                                <div id="collapseD151_1" class="accordion-collapse collapse" data-bs-parent="#accordionD151">
+                                    <div class="accordion-body">
+                                        Es una declaración informativa que detalla pagos realizados a terceros durante el año fiscal...
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
