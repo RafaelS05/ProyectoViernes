@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="~{layout/plantilla :: head}"></head>
+
+
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"></header>
+
+        <div th:replace="~{asesoria/fragmentos :: form-agenda}"></div>
+        
+        <section th:replace="~{asesoria/fragmentos :: lista}"></section>
+        
+        <section th:replace="~{asesoria/fragmentos :: chat-Simulado}"></section>
+
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    </body>
+</html>

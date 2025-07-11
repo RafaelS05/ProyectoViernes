@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <div th:fragment="form-agenda">
+            <h4>Agendar Asesoría</h4>
+
+            <form th:action="@{/asesoria/guardar}" th:object="${asesoria}" method="post">
+                <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label">Nombre</label>
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{nombre}" class="form-control" placeholder="Nombre completo" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label">Fecha</label>
+                    <div class="col-sm-9">
+                        <input type="datetime-local" th:field="*{fecha}" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label">Tipo de Consulta</label>
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{tipoConsulta}" class="form-control" placeholder="Ej: Cita, Asesoría general" required>
+                    </div>
+                </div>
+
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary">Guardar Asesoría</button>
+                </div>
+            </form>
+
+
+        </div>
+
+        <!-- Apartado de la lista de Agendas -->
+        <section th:fragment="lista">
+            <div class="card p-4 mb-4">
+                <h4>Asesorías Agendadas</h4>
+
+                <div class="table-responsive">
+                    <table class="table table-striped align-middle">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Fecha</th>
+                                <th>Tipo de Consulta</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="a : ${asesorias}">
+                                <td th:text="${a.nombre}">Nombre</td>
+                                <td th:text="${#temporals.format(a.fecha, 'yyyy-MM-dd HH:mm')}">Fecha</td>
+                                <td th:text="${a.tipoConsulta}">Tipo</td>
+                                <td>
+                                    <a th:href="@{'/asesoria/eliminar/' + ${a.idAsesoria}}" 
+                                       class="btn btn-danger btn-sm"
+                                       onclick="return confirm('¿Deseas eliminar esta asesoría?')">
+                                        Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Apartado del chat -->
+        <section th:fragment="chat-Simulado">
+            <div class="card p-4">
+                <h4>Consultas Rápidas</h4>
+
+                <form th:action="@{/asesoria/chat}" method="post" class="row g-3 align-items-center">
+                    <div class="col-md-9">
+                        <input type="text" name="consulta" class="form-control" placeholder="Ej: Horarios, Precio, Ubicación" required>
+                    </div>
+                    <div class="col-md-3 text-end">
+                        <button type="submit" class="btn btn-secondary w-100">Enviar</button>
+                    </div>
+                </form>
+
+                <div class="mt-3" th:if="${mensaje != null}">
+                    <strong>Respuesta:</strong> <span th:text="${mensaje}"></span>
+                </div>
+            </div>
+
+        </section>
+
+
+
+    </body>
+</html>

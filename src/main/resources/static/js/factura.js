@@ -1,4 +1,3 @@
-    // Script para actualizar factura en vivo
     document.getElementById('inputFactura').addEventListener('input', e => {
         document.getElementById('facturaNumero').textContent = e.target.value || '---';
     });

@@ -32,6 +32,11 @@ public class Factura {
     @Column(name = "Descripcion")
     private String descripcion;
 
+    @Column(name = "Estado_Factura")
+    private boolean estadoFactura;
 
-
+    public boolean isEstadoFactura() {
+        return estadoFactura;
+    }
+    
 }

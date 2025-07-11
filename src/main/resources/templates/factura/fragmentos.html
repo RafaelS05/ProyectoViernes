@@ -4,7 +4,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
     <body>
-        <div th:fragment="factura-formulario">
+        <div th:fragment="factura-formulario" th:action="@{/factura/guardar}">
             <div class="container mb-5">
                 <!-- FORMULARIO -->
                 <div class="card p-4 mb-4">
@@ -98,7 +98,9 @@
             <div class="text-center mt-4">
                 <button class="btn btn-pdf" onclick="descargarPDF()">Descargar PDF</button>
             </div>
+
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
             <script th:src="@{/js/factura.js}"></script>
+        </div>
     </body>
 </html>
