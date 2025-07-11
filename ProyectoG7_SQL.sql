@@ -94,3 +94,15 @@ CREATE TABLE IF NOT EXISTS Factura (
         ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+
+-- Tabla Asesoria
+CREATE TABLE Asesoria(
+ID_Asesoria INT AUTO_INCREMENT PRIMARY KEY,
+Nombre VARCHAR(75),
+Fecha DATE NOT NULL,
+TipoConsulta VARCHAR (80) 
+);
+INSERT INTO Asesoria(ID_Asesoria, Nombre, Fecha, TipoConsulta) 
+VALUES (1, 'Fiscal', '2025-07-25', 'Cita'),
+(2, 'Contabilidad', '2025-08-20', 'Asesoria'),
+(3, 'Contabilidad', '2025-07-20', 'Cita');
