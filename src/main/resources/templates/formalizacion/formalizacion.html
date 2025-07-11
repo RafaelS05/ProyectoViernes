@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}"></head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"></header>
+
+        <div class="container mt-5">
+            <h2 class="text-center mb-4">Guía para formalizar un negocio</h2>
+
+            <!-- Tabs -->
+            <ul class="nav nav-tabs mb-3" id="tabsFormalizacion" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="paso1-tab" data-bs-toggle="tab" data-bs-target="#paso1" type="button">Paso 1</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="paso2-tab" data-bs-toggle="tab" data-bs-target="#paso2" type="button">Paso 2</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="paso3-tab" data-bs-toggle="tab" data-bs-target="#paso3" type="button">Paso 3</button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="tabsContentFormalizacion">
+                <div class="tab-pane fade show active" id="paso1" role="tabpanel">
+                    <h5>Determinar si su empresa va a ser persona física o jurídica</h5>
+                    <p>Hay que tomar la decisión de si se quiere trabajar como persona física o jurídica; si eliges trabajar como persona jurídica, debes inscribirte ante el registro nacional,para esto necesitas la ayuda de un abogado para poder constituir una persona jurídica.</p>
+                    <p>Si deseas continuar como persona física, puedes continuar con el paso 2.</p>
+                    <a href="https://atv.hacienda.go.cr/ATV/Login.aspx" class="btn btn-outline-secondary" target="_blank">Ir a ATV</a>
+                </div>
+                <div class="tab-pane fade" id="paso2" role="tabpanel">
+                    <h5>Inscripción ante Hacienda</h5>
+                    <p>Registrate en ATV como persona física.</p>
+                    <p>Seleccioná entre Régimen Tradicional o Simplificado según el tipo de actividad económica.
+                    <br>
+                    <a href="https://atv.hacienda.go.cr/ATV/Login.aspx" class="btn btn-outline-secondary" target="_blank">Ir a ATV</a>
+                    <br>
+                    <p>Para tu facilidad te adjuntamos el formulario de hacienda que detalla paso a paso como inscribirse.</p>
+                </div>
+                <div class="tab-pane fade" id="paso3" role="tabpanel">
+                    <h5>Inscripción CCSS</h5>
+                    <p>Inscribite en la Caja como trabajador independiente o patrono.</p>
+                    <p>Puedes inscribirte como trabajador independiente si tu actividad te permite trabajar sin colaboradores ni empleados, si necesitas trabajar con empleados o colaboradores, debes inscribirte como patrono porque debes reportar a tus trabajadores.</p>
+                    <a href="https://www.ccss.sa.cr/" class="btn btn-outline-secondary" target="_blank">Ir a CCSS</a>
+                </div>
+            </div>
+
+
+            <div class="text-center mt-4">
+                <a class="btn btn-success"
+                   th:href="@{/pdf/RequisitosGeneralesYEspecificosInscripcionModifDesinsc.pdf}" 
+                   download>
+                    <i class="fas fa-file-pdf"></i> Descargar guía en PDF
+                </a>
+            </div>
+
+            <footer th:replace="~{layout/plantilla :: footer}"></footer>
+
+    </body>
+</html>

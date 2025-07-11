@@ -45,12 +45,6 @@ INSERT INTO Actividad_Economica (Nombre_Actividad) VALUES
 ('Educación privada'),
 ('Construcción');
 
--- Tabla Pyme
-ALTER TABLE Pyme
-ADD COLUMN Cedula_juridica_fisica VARCHAR(50);
-UPDATE Pyme
-SET Cedula_juridica_fisica = CONCAT('TEMP-', PK_ID_Pyme);
-
 
 CREATE TABLE IF NOT EXISTS Pyme (
     PK_ID_Pyme INT AUTO_INCREMENT PRIMARY KEY,

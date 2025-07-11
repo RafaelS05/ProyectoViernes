@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="tabla-obligaciones">
+    <div class="container mt-5">
+        <h2 class="mb-4 text-center" th:text="#{obligaciones.titulo}"></h2>
+        <p class="lead" th:text="#{obligaciones.descripcion}"></p>
+
+        <table class="table table-bordered table-hover">
+            <thead class="table-secondary">
+                <tr>
+                    <th th:text="#{obligaciones.columna.tramite}"></th>
+                    <th th:text="#{obligaciones.columna.descripcion}"></th>
+                    <th th:text="#{obligaciones.columna.enlace}"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><i class="fas fa-file-invoice"></i> <span th:text="#{obligaciones.tramite.d104}"></span></td>
+                    <td th:text="#{obligaciones.descripcion.d104}"></td>
+                    <td><a href="https://www.hacienda.go.cr/InformacionTributaria.html" target="_blank" th:text="#{obligaciones.enlace.guia}"></a></td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-file-alt"></i> <span th:text="#{obligaciones.tramite.d151}"></span></td>
+                    <td th:text="#{obligaciones.descripcion.d151}"></td>
+                    <td><a href="https://www.hacienda.go.cr/InformacionTributaria.html" target="_blank" th:text="#{obligaciones.enlace.formulario151}"></a></td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-id-card"></i> <span th:text="#{obligaciones.tramite.atv}"></span></td>
+                    <td th:text="#{obligaciones.descripcion.atv}"></td>
+                    <td><a href="https://atv.hacienda.go.cr/ATV/Login.aspx" target="_blank" th:text="#{obligaciones.enlace.atv}"></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center mt-5" th:if="${session.usuarioLogueado != null}">
+        <a class="btn btn-lg btn-primary" th:href="@{/formalizacion}">
+            <i class="fas fa-clipboard-list"></i> <span th:text="#{obligaciones.boton.formalizacion}"></span>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
+
