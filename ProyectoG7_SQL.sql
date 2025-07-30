@@ -88,7 +88,6 @@ CREATE TABLE IF NOT EXISTS Factura (
         ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-
 -- Tabla Asesoria
 CREATE TABLE Asesoria(
 ID_Asesoria INT AUTO_INCREMENT PRIMARY KEY,
@@ -100,3 +99,14 @@ INSERT INTO Asesoria(ID_Asesoria, Nombre, Fecha, TipoConsulta)
 VALUES (1, 'Fiscal', '2025-07-25', 'Cita'),
 (2, 'Contabilidad', '2025-08-20', 'Asesoria'),
 (3, 'Contabilidad', '2025-07-20', 'Cita');
+
+CREATE TABLE IF NOT EXISTS Casos(
+    ID_Caso INT AUTO_INCREMENT PRIMARY KEY,
+    FK_Cedula_Usuario VARCHAR(20) NOT NULL,
+    Descripcion TEXT,
+    Rating INT CHECK (Rating BETWEEN 1 AND 5),
+    Fecha_Creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (FK_Cedula_Usuario) REFERENCES Usuario(PK_Cedula)
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+
