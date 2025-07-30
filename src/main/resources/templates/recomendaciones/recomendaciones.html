@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/plantilla :: head}"></head>
+<body>
+    <header th:replace="~{layout/plantilla :: header}"></header>
+
+    <main class="container my-5">
+        <div th:if="${tienePyme}">
+            <div th:replace="recomendaciones/fragmentos :: lista-recomendaciones"></div>
+        </div>
+
+        <div th:unless="${tienePyme}" class="alert alert-warning text-center">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span th:text="#{recomendaciones.noPyme}">
+            </span>
+        </div>
+    </main>
+
+    <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    <script th:src="@{/js/rutinas.js}"></script>
+</body>
+</html>
