@@ -9,5 +9,3 @@ public interface FacturaRepository extends JpaRepository<Factura, Long> {
     List<Factura> findByCliente_Cedula (String cedula);
     
 }
-
-

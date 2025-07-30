@@ -4,100 +4,73 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
     <body>
-        <div th:fragment="factura-formulario" th:action="@{/factura/guardar}">
+        <div th:fragment="factura-formulario">
             <div class="container mb-5">
                 <!-- FORMULARIO -->
                 <div class="card p-4 mb-4">
-                    <h4>Formulario de factura</h4>
+                    <p>Inicia sesión para facturar</p>
+                    <form th:action="@{/factura/guardar}" th:if="${session.usuarioLogueado != null}"> 
+                        <h4>Formulario de factura</h4>
 
-                    <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Número de factura</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputFactura" placeholder="N° Factura">
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label">Número de factura</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputFactura"  placeholder="N° Factura Automático" readonly>
+                            </div>
                         </div>
-                    </div>
+                        <!-- Div de Num Factura -->
 
-                    <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Cédula del cliente</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputCedula" placeholder="N° Cédula">
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label">Cédula del cliente</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputCedula" placeholder="N° Cédula">
+                            </div>
                         </div>
-                    </div>
+                        <!-- Div de Cliente -->
 
-                    <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Monto</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputMonto" placeholder="Monto ₡">
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label">Monto</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputMonto" placeholder="Monto ₡">
+                            </div>
                         </div>
-                    </div>
+                        <!-- Div de Monto-->
 
-                    <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Fecha</label>
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control" id="inputFecha">
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label">Fecha</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control" id="inputFecha">
+                            </div>
                         </div>
-                    </div>
+                        <!-- Div de Fecha -->
 
-                    <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Descripción</label>
-                        <div class="col-sm-9">
-                            <textarea class="form-control" id="inputDescripcion" rows="2"></textarea>
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label">Descripción</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="inputDescripcion" rows="2"></textarea>
+                            </div>
                         </div>
-                    </div>
+                        <!-- Div de Descripción -->
 
-                    <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Estado de la factura</label>
-                        <div class="col-sm-9">
-                            <select class="form-select" id="inputEstado">
-                                <option value="Activa" selected>Activa</option>
-                                <option value="Anulada">Anulada</option>
-                            </select>
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label">Estado de la factura</label>
+                            <div class="col-sm-9">
+                                <select class="form-select" id="inputEstado">
+                                    <option value="Activa" selected>Activa</option>
+                                    <option value="Anulada">Anulada</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
+                        <!-- Div de Estado -->
+                        
+                        <div class="text-center mt-4">
+                            <button class="btn btn-pdf" onclick="descargarPDF()">Descargar PDF</button>
+                        </div>
+                    </form>              
+
                 </div>
             </div>
 
-            <!-- FACTURA PREVISUALIZADA -->
-            <div class="container border p-4" style="max-width: 700px;" id="factura">
-                <h2 class="text-center mb-4">Factura</h2>
-
-                <div class="row mb-2">
-                    <div class="col-6">
-                        <strong>Número de Factura:</strong> <span id="facturaNumero">---</span>
-                    </div>
-                    <div class="col-6 text-end">
-                        <strong>Fecha:</strong> <span id="facturaFecha">---</span>
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <strong>Cédula del Cliente:</strong> <span id="facturaCedula">---</span>
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <strong>Descripción:</strong>
-                        <div class="border p-2" id="facturaDescripcion">---</div>
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-6">
-                        <strong>Monto:</strong> <span id="facturaMonto">---</span>
-                    </div>
-                    <div class="col-6 text-end">
-                        <strong>Estado:</strong> <span id="facturaEstado">---</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center mt-4">
-                <button class="btn btn-pdf" onclick="descargarPDF()">Descargar PDF</button>
-            </div>
 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
             <script th:src="@{/js/factura.js}"></script>
