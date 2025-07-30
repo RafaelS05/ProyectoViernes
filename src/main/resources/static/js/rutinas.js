@@ -71,3 +71,38 @@ function cancelarEdicion() {
     document.getElementById("vistaPyme").style.display = "block";
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    const estrellas = document.querySelectorAll('#estrellas i');
+    const inputRating = document.getElementById('rating');
+
+    estrellas.forEach(estrella => {
+        estrella.addEventListener('click', () => {
+            const valor = estrella.getAttribute('data-value');
+            inputRating.value = valor;
+            actualizarEstrellas(valor);
+        });
+    });
+
+    function actualizarEstrellas(valor) {
+        estrellas.forEach(e => {
+            const v = e.getAttribute('data-value');
+            e.classList.remove('fa-solid', 'text-warning');
+            e.classList.add('fa-regular');
+            if (v <= valor) {
+                e.classList.add('fa-solid', 'text-warning');
+                e.classList.remove('fa-regular');
+            }
+        });
+    }
+
+    if (inputRating.value) {
+        actualizarEstrellas(inputRating.value);
+    }
+});
+
+    function setEliminarUrl(url) {
+        const boton = document.getElementById('btnConfirmarEliminar');
+        boton.setAttribute('href', url);
+    }
+
+

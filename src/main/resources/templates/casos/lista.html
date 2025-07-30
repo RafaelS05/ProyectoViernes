@@ -1,11 +1,11 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{layout/plantilla :: head}"></head>
     <body>
         <header th:replace="~{layout/plantilla :: header}"></header>
 
         <main class="container my-5">
-            <div th:replace="~{pyme/fragmentos :: formulario-registro-pyme}"></div>
+            <div th:replace="casos/fragmentos :: tabla-casos"></div>
+            <div th:replace="casos/fragmentos :: modal-eliminar"></div>
         </main>
 
         <footer th:replace="~{layout/plantilla :: footer}"></footer>
