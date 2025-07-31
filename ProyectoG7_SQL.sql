@@ -80,6 +80,7 @@ CREATE TABLE IF NOT EXISTS Usuario_Pyme (
 CREATE TABLE IF NOT EXISTS Factura (
     ID_Factura INT AUTO_INCREMENT PRIMARY KEY,
     FK_Cedula_Cliente VARCHAR(100) NOT NULL,
+    Numero_Factura VARCHAR (100) UNIQUE,
     Monto DECIMAL(10,2) NOT NULL,
     Fecha DATE NOT NULL,
     Descripcion TEXT,
