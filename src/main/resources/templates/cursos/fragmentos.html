@@ -5,10 +5,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .card-img-top {
+                height: 250px;
+                width: 100%;
+                object-fit: cover;
+            }
+        </style>
     </head>
+
     <body>
         <div th:fragment="cursos">
             <div class="container mt-5">
@@ -21,7 +26,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
                 <div class="row g-4">
                     <!-- Curso 1 -->
-                    <div class="col-md-6">
+                    <div class="col-md-6 ">
                         <a th:href="@{/cursoexcel}" class="text-decoration-none text-dark">
                             <div class="card h-100 shadow-sm">
                                 <img src="/img/cursoexcel.png" class="card-img-top" alt="Curso Excel Contable"/>
@@ -49,9 +54,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     </div>
                 </div>
 
-            
-
-                
             </div>
         </div>
 
