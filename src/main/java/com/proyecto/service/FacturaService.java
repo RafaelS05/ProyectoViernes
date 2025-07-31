@@ -19,7 +19,7 @@ public class FacturaService {
     }
 
     @Transactional(readOnly = true)
-    public List<Factura> getFacturas(){
+    public List<Factura> getFacturas() {
         return facturaRepository.findAll();
     }
 
@@ -36,5 +36,22 @@ public class FacturaService {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    @Transactional(readOnly = true)
+    public String generarSiguienteNumeroFactura() {
+        String ultimoNumero = facturaRepository.obtenerUltimoNumeroFactura();
+        int numero = 0;
+
+        if (ultimoNumero != null && ultimoNumero.startsWith("F-")) {
+            try {
+                numero = Integer.parseInt(ultimoNumero.replace("F-", ""));
+            } catch (NumberFormatException e) {
+                numero = 0;
+            }
+        }
+
+        numero++; // siguiente número
+        return String.format("F-%04d", numero);
     }
 }

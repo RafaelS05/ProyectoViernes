@@ -20,6 +20,9 @@ public class Factura {
     @ManyToOne(optional = false)
     @JoinColumn(name = "FK_Cedula_Cliente", referencedColumnName = "PK_Cedula")
     private Usuario cliente;
+    
+    @Column(name = "Numero_Factura", unique = true)
+    private  String numeroFactura;
 
     @NotNull(message = "{factura.monto.notnull}")
     @Column(name = "Monto")
