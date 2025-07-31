@@ -20,9 +20,9 @@ public class Factura {
     @ManyToOne(optional = false)
     @JoinColumn(name = "FK_Cedula_Cliente", referencedColumnName = "PK_Cedula")
     private Usuario cliente;
-    
+
     @Column(name = "Numero_Factura", unique = true)
-    private  String numeroFactura;
+    private String numeroFactura;
 
     @NotNull(message = "{factura.monto.notnull}")
     @Column(name = "Monto")
@@ -41,5 +41,13 @@ public class Factura {
     public boolean isEstadoFactura() {
         return estadoFactura;
     }
-    
+
+    public void setCliente(Usuario cliente) {
+        this.cliente = cliente;
+    }
+
+    public Usuario getCliente() {
+        return cliente;
+    }
+
 }

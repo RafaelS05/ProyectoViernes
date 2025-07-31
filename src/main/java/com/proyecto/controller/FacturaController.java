@@ -35,13 +35,11 @@ public class FacturaController {
             return "redirect:/login";
         }
 
-        // Obtener usuario persistente
         Usuario usuarioPersistente = usuarioService.getUsuarioPorCedula(usuarioLogueado.getCedula());
 
         Factura nuevaFactura = new Factura();
         nuevaFactura.setCliente(usuarioPersistente);
 
-        // Generar número de factura incremental y formateado
         List<Factura> facturas = facturaService.getFacturas();
         int nuevoNumero = facturas.stream()
                 .mapToInt(f -> {
@@ -85,14 +83,12 @@ public class FacturaController {
             return "factura/factura";
         }
 
-        // Volver a obtener el cliente persistente desde la sesión
         Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
         if (usuarioLogueado != null) {
             Usuario usuarioPersistente = usuarioService.getUsuarioPorCedula(usuarioLogueado.getCedula());
             factura.setCliente(usuarioPersistente);
         }
 
-        // Asegurar que se asigna el número si no viene ya
         if (factura.getNumeroFactura() == null || factura.getNumeroFactura().isEmpty()) {
             String numeroFormateado = facturaService.generarSiguienteNumeroFactura();
             factura.setNumeroFactura(numeroFormateado);
@@ -102,6 +98,6 @@ public class FacturaController {
 
         redirectAttributes.addFlashAttribute(messageSource.getMessage("Factura.guardada", null, locale));
 
-        return "redirect:/factura";
+        return "redirect:factura/registro";
     }
 }

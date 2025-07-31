@@ -51,7 +51,7 @@ public class FacturaService {
             }
         }
 
-        numero++; // siguiente número
+        numero++;
         return String.format("F-%04d", numero);
     }
 }

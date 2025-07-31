@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-
 <!-- Fragmento de factura -->
 <html xmlns:th="http://www.thymeleaf.org">
-
     <body>
         <div th:fragment="factura-formulario(factura)" >
             <div class="container mb-5" >
@@ -22,7 +20,7 @@
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Cédula del cliente</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" th:field="*{cliente.cedula}" id="inputCedula" placeholder="N° Cédula">
+                                <input type="text" class="form-control" th:field="*{cliente.cedula}" id="inputCedula" placeholder="N° Cédula" readonly>
                             </div>
                         </div>
                         <!-- Div de Cliente -->
@@ -54,21 +52,21 @@
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Estado de la factura</label>
                             <div class="col-sm-9">
-                                <select class="form-select" id="inputEstado">
-                                    <option  value="Activa" th:text="#{Factura.form.estadoAC}"></option>
-                                    <option value="Anulada" th:text="#{Factura.form.estadoIN}"></option>
+                                <select class="form-select" th:field="*{estadoFactura}" id="inputEstado">
+                                    <!--<option  value="" th:text="#{Factura.form.estado}"></option>-->
+                                    <option  value="true" th:text="#{Factura.form.estadoAC}"></option>
+                                    <option  value="false" th:text="#{Factura.form.estadoIN}"></option>
                                 </select>
                             </div>
                         </div>
                         <!-- Div de Estado -->
 
                         <div class="text-center mt-4">
-                            <button class="btn btn-pdf" onclick="descargarPDF()">Descargar PDF</button>
+                            <button class="btn btn-salmon" onclick="descargarPDF()">Guardar y Descargar Factura</button>
                         </div>
                     </form>
 
-
-
+                    <!-- Sitaución si el usuario no esta registrado e intenta facturar -->
                     <p th:text="#{Factura.form.factura}" th:if="${session.usuarioLogueado == null}"></p>
                     <ul class="navbar-nav list-unstyled">
                         <li class="nav-item" th:if="${session.usuarioLogueado == null}">
@@ -80,19 +78,8 @@
                         </li>
                         <!-- btn Inicio sesión -->
                     </ul>
-
-
-
-
-
-
-
-
-
                 </div>
             </div>
-
-
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
             <script th:src="@{/js/factura.js}"></script>
         </div>
