@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div th:fragment="cursos">
+            <div class="container mt-5">
+                <h2 class="mb-4">Centro de Aprendizaje: Cursos por Categoría</h2>
+
+                <div class="mb-4">
+                    <h4 class="text-primary">Herramientas para la Gestión Contable</h4>
+                    <p>Aprende a utilizar Excel para llevar el control de ingresos, egresos, inventarios y reportes contables.</p>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Curso 1 -->
+                    <div class="col-md-6">
+                        <a th:href="@{/cursoexcel}" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow-sm">
+                                <img src="/img/cursoexcel.png" class="card-img-top" alt="Curso Excel Contable"/>
+                                <div class="card-body">
+                                    <h5 class="card-title">Excel para Procesos Contables</h5>
+                                    <p class="card-text">Aprende a usar Excel para organizar tus finanzas, controlar ingresos y crear reportes mensuales.</p>
+                                    <span class="badge bg-info text-dark">Duración estimada: 4 Horas</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Curso 2 -->
+                    <div class="col-md-6">
+                        <a href="/cursos/control-inventario" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow-sm">
+                                <img src="/img/cursoinventarios.png" class="card-img-top" alt="Curso Control Inventario"/>
+                                <div class="card-body">
+                                    <h5 class="card-title">Facturación y Control de Inventario</h5>
+                                    <p class="card-text">Construye hojas de cálculo en Excel para gestionar tus ventas y tu inventario de forma sencilla.</p>
+                                    <span class="badge bg-info text-dark">Duración estimada: 1 Hora</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            
+
+                
+            </div>
+        </div>
+
+    </body>
+</html>
