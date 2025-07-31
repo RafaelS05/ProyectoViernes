@@ -10,6 +10,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, String> {
     Usuario findByCedula(String cedula);
     
     
+    
 }
 
 

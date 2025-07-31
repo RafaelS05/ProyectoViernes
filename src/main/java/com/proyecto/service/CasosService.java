@@ -16,10 +16,10 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 public class CasosService {
-    
+
     @Autowired
     private CasosRepository casosRepository;
-    
+
     @Transactional
     public void save(Caso caso) {
         casosRepository.save(caso);
@@ -34,11 +34,9 @@ public class CasosService {
             return false;
         }
     }
-    
-    public Caso getCasoPorId(int id) {
-    return casosRepository.findById(id).orElse(null);
-}
 
-     
-    
+    public Caso getCasoPorId(int id) {
+        return casosRepository.findById(id).orElse(null);
+    }
+
 }

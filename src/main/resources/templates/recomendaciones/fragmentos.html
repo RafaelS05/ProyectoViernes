@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+    <div th:fragment="lista-recomendaciones">
+
+        <div th:if="${tienePyme}">
+
+            <div class="text-center mb-4">
+                <h2 th:text="#{recomendaciones.titulo}">Recomendaciones para su PyME</h2>
+                <p th:text="#{recomendaciones.intro}">Aquí encontrará artículos útiles para su sector económico</p>
+            </div>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <div class="col" th:each="recomendacion : ${recomendaciones}">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title" th:text="${recomendacion.titulo}">Título</h5>
+                            <p class="card-text text-muted mb-3" th:text="${recomendacion.contenido}">Descripción breve de la recomendación.</p>
+                            <a class="btn btn-outline-primary mt-auto"
+                               th:href="${recomendacion.fuente}" target="_blank" th:text="#{recomendaciones.leerMas}">Leer más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div th:unless="${tienePyme}" class="alert alert-warning text-center">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span th:text="#{recomendaciones.noPyme}">No tiene una PyME registrada. Regístrela para ver recomendaciones.</span>
+        </div>
+
+    </div>
+
+
+
+
+</html>

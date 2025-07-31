@@ -16,7 +16,7 @@ public class UsuarioPyme {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "FK_Cedula", nullable = false)
+    @JoinColumn(name = "FK_Cedula", referencedColumnName = "PK_Cedula")
     private Usuario usuario;
 
     @ManyToOne
