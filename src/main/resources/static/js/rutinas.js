@@ -106,3 +106,29 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+function responder() {
+    const input = document.getElementById("user-input").value.toLowerCase().trim();
+    const chat = document.getElementById("chat");
+
+    let respuesta = "Lo siento, no tengo información sobre eso. Te recomiendo revisar las preguntas frecuentes o contactar a soporte.";
+
+    const respuestas = {
+        "factura": "Para facturar electrónicamente, ingresa al menú Facturación y haz clic en 'Nueva factura'.",
+        "correo": "Para cambiar tu correo, ve a tu perfil y haz clic en 'Editar'.",
+        "plan": "Actualmente ofrecemos planes para pymes, emprendedores y contadores.",
+        "certificado": "El certificado se descarga desde tu cuenta del Ministerio de Hacienda.",
+        "firma digital": "La firma digital se configura desde tu navegador siguiendo las instrucciones del BCCR."
+    };
+
+    // Buscar una respuesta por coincidencia de palabra clave
+    for (const clave in respuestas) {
+        if (input.includes(clave)) {
+            respuesta = respuestas[clave];
+            break;
+        }
+    }
+
+    chat.innerHTML += `<p><strong>Usted:</strong> ${input}</p><p><strong>Soporte Virtual:</strong> ${respuesta}</p>`;
+    document.getElementById("user-input").value = "";
+}
+

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{layout/plantilla :: head}"></head>
+
+<body>
+
+<header th:replace="~{layout/plantilla :: header}"></header>
+
+<div th:replace="~{soporte/fragmentos :: contenido}"></div>
+
+<footer th:replace="~{layout/plantilla :: footer}"></footer>
+
+<script th:src="@{/js/rutinas.js}"></script>
+</body>
+</html>

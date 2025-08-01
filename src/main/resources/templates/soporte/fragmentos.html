@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="contenido">
+    <section class="container mt-5">
+        <h3 class="text-center mb-4">¿Necesitas ayuda?</h3>
+
+        <div class="card p-4 mb-4">
+            <p><strong>¿Cómo puedo facturar electrónicamente?</strong></p>
+            <p>Ingrese al menú Facturación, seleccione "Nueva factura" y complete los datos.</p>
+
+            <hr>
+
+            <p><strong>¿Cómo puedo cambiar mi correo electrónico?</strong></p>
+            <p>Desde tu perfil, haz clic en "Editar".</p>
+
+            <hr>
+
+            <p><strong>¿Tienes otra duda? Pregunta aquí:</strong></p>
+
+            <div id="chat">
+                <p><strong>Soporte Virtual:</strong> Hola, ¿en qué puedo ayudarte?</p>
+            </div>
+
+            <div class="input-group my-3">
+                <input id="user-input" type="text" class="form-control" placeholder="Escribe tu pregunta...">
+                <button class="btn btn-primary" onclick="responder()">Enviar</button>
+            </div>
+
+            <hr>
+
+            <p><strong>¿No encontrás lo que buscás?</strong></p>
+            <a class="btn btn-outline-primary me-2 mb-2" th:href="@{/preguntas}">Ir a Preguntas Frecuentes</a>
+            <a class="btn btn-outline-secondary mb-2" href="mailto:soporte@siemcontabilidad.com">Contactar a Soporte</a>
+
+            <div class="mt-3">
+                <p><i class="fas fa-phone"></i> Teléfono: +506 4000-0000</p>
+                <p><i class="fas fa-envelope"></i> Correo: soporte@siemcontabilidad.com</p>
+            </div>
+        </div>
+    </section>
+</div>
