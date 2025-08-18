@@ -14,5 +14,5 @@ public interface PymeRepository extends JpaRepository<Pyme, Long> {
 
     @Query("SELECT p FROM Pyme p JOIN UsuarioPyme up ON up.pyme = p WHERE up.usuario.cedula = :cedulaUsuario")
     Pyme findByUsuarioCedula(@Param("cedulaUsuario") String cedulaUsuario);
-
+    
 }
