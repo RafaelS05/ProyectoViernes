@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <!-- Formulario -->
+        <div th:fragment="formulario">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- templates/ia/fragmentos.html -->
+                    <aside th:fragment="sidebar" class="col-12 col-md-4 col-lg-3 sidebar pt-5">
+                        <!-- Temas recientes -->
+                        <h6 class="fw-bold" th:text="#{ia.sidebar.recent.title}"></h6>
+                        <ul class="list-disc ps-3">
+                            <li>
+                                <a href="#" class="sidebar-link fill-prompt"
+                                   th:text="#{ia.sidebar.recent.tribucr.label}"
+                                   th:attr="data-prompt=#{ia.sidebar.recent.tribucr.prompt}">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="sidebar-link fill-prompt"
+                                   th:text="#{ia.sidebar.recent.cabys.label}"
+                                   th:attr="data-prompt=#{ia.sidebar.recent.cabys.prompt}">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="sidebar-link fill-prompt"
+                                   th:text="#{ia.sidebar.recent.receptor.label}"
+                                   th:attr="data-prompt=#{ia.sidebar.recent.receptor.prompt}">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="sidebar-link fill-prompt"
+                                   th:text="#{ia.sidebar.recent.notas.label}"
+                                   th:attr="data-prompt=#{ia.sidebar.recent.notas.prompt}">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="sidebar-link fill-prompt"
+                                   th:text="#{ia.sidebar.recent.contingencia.label}"
+                                   th:attr="data-prompt=#{ia.sidebar.recent.contingencia.prompt}">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="sidebar-link fill-prompt"
+                                   th:text="#{ia.sidebar.recent.firma.label}"
+                                   th:attr="data-prompt=#{ia.sidebar.recent.firma.prompt}">
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!-- Preguntas frecuentes -->
+                        <h6 class="fw-bold mt-4" th:text="#{ia.sidebar.faq.title}"></h6>
+                         <ul class="list-disc ps-3">
+                            <li>
+                                <a href="#" class="sidebar-link fill-prompt"
+                                   th:text="#{ia.sidebar.faq.quees.label}"
+                                   th:attr="data-prompt=#{ia.sidebar.faq.quees.prompt}">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="sidebar-link fill-prompt"
+                                   th:text="#{ia.sidebar.faq.primera.label}"
+                                   th:attr="data-prompt=#{ia.sidebar.faq.primera.prompt}">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="sidebar-link fill-prompt"
+                                   th:text="#{ia.sidebar.faq.cabysbuscar.label}"
+                                   th:attr="data-prompt=#{ia.sidebar.faq.cabysbuscar.prompt}">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="sidebar-link fill-prompt"
+                                   th:text="#{ia.sidebar.faq.iva.label}"
+                                   th:attr="data-prompt=#{ia.sidebar.faq.iva.prompt}">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="sidebar-link fill-prompt"
+                                   th:text="#{ia.sidebar.faq.exoneraciones.label}"
+                                   th:attr="data-prompt=#{ia.sidebar.faq.exoneraciones.prompt}">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="sidebar-link fill-prompt"
+                                   th:text="#{ia.sidebar.faq.gastos.label}"
+                                   th:attr="data-prompt=#{ia.sidebar.faq.gastos.prompt}">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="sidebar-link fill-prompt"
+                                   th:text="#{ia.sidebar.faq.sinpe.label}"
+                                   th:attr="data-prompt=#{ia.sidebar.faq.sinpe.prompt}">
+                                </a>
+                            </li>
+                        </ul>
+                    </aside>
+
+
+                    <section th:fragment="formulario" class="col-lg-9">
+                        <div class="text-center mb-3">
+                            <img src="/img/ia.png" class="img-fluid ia" alt="Plan 1">
+                        </div>
+
+                        <h1 class="text-center mb-3" th:text="#{ai.title}"></h1>
+
+                        <form id="iaForm" class="mb-3 prB">
+                            <div class="d-flex align-items-start mb-3">
+                                <textarea id="prompt" class="form-control prompt-box me-2" rows="3"
+                                          th:placeholder="#{ai.prompt.placeholder}"></textarea>
+
+                                <button type="button" id="btnHablar" class="btn-mic">
+                                    <i class="fas fa-microphone"></i>
+                                </button>
+                            </div>
+
+                           
+                                <button type="submit" class="btn btn-primary btn-salmon" id="btnGenerate" th:text="#{ai.generar}"></button>
+                           
+
+                        </form>
+                       
+
+
+                    </section>
+
+                </div>
+            </div>
+        </div>
+
+        <div th:fragment="modal-resultado">
+            <div class="modal fade" id="resultModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" th:text="#{ia.modal.title}"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                            <pre id="resultText" class="mb-0 result"></pre>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" th:text="#{boton.cerrar}">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:fragment="modal-error">
+            <div class="modal fade" id="errorModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content border-danger">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-danger" th:text="#{ia.modal.errorTitle}"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p id="errorText" class="mb-0"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" th:text="#{boton.cerrar}"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </body>
+</html>
+

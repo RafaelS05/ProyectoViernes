@@ -57,59 +57,59 @@
 
 /* Estilo base */
 .modo-bn-toggle {
-  width: 50px;
-  height: 120px;
-  border-radius: 30px;
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    width: 50px;
+    height: 120px;
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
 .modo-bn-toggle-inner {
-  position: absolute;
-  width: 100%;
-  height: 240px;
-  top: 0;
-  left: 0;
-  transition: transform 0.4s ease-in-out;
+    position: absolute;
+    width: 100%;
+    height: 240px;
+    top: 0;
+    left: 0;
+    transition: transform 0.4s ease-in-out;
 }
 
 .modo-bn-toggle.on .modo-bn-toggle-inner {
-  transform: translateY(0);
+    transform: translateY(0);
 }
 
 .modo-bn-toggle.off .modo-bn-toggle-inner {
-  transform: translateY(-120px);
+    transform: translateY(-120px);
 }
 
 .modo-superior {
-  height: 120px;
-  background-color: #1d1d1d;
-  color: white;
-  font-weight: bold;
-  font-size: 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    height: 120px;
+    background-color: #1d1d1d;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .modo-inferior {
-  height: 120px;
-  background-color: #d3d3d3;
-  color: black;
-  font-size: 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    height: 120px;
+    background-color: #d3d3d3;
+    color: black;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 
 
 .iconos-beneficios i {
-    color: #E9967A; 
+    color: #E9967A;
     font-size: 2rem;
 }
 
@@ -127,7 +127,7 @@
 
 
 .registro-container input.form-control {
-    background-color: #fff7f0; 
+    background-color: #fff7f0;
     border: 1px solid #ccc;
     padding: 0.5rem;
     transition: background-color 0.3s ease;
@@ -135,17 +135,17 @@
 
 /* Efecto al enfocar */
 .registro-container input.form-control:focus {
-    background-color: #ffe5d0; 
+    background-color: #ffe5d0;
     border-color: #ff9966;
     box-shadow: 0 0 5px rgba(255, 153, 102, 0.5);
 }
 
 .texto-entrada{
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 .cedula\.editar{
-    margin: 0 auto; 
+    margin: 0 auto;
     color: #ff0033
 }
 
@@ -153,7 +153,7 @@
 
 .registro-container{
     background: linear-gradient(to bottom, white 0%, #E9967A);
-   
+
 }
 
 .plataformas-externas {
@@ -224,4 +224,81 @@ main {
     text-align: center;
     padding: 1rem;
 }
+
+.ia{
+    width: 190px;
+    height: 190px;
+}
+
+.result {
+    white-space: pre-wrap;
+}
+
+.prompt-box{
+    background-color: #FFA07A;
+    border: 3px solid #FFA07A;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.prompt-box:focus{
+    background-color: #ffc18c;
+    border: 3px solid #FFA07A;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.prB{
+     padding-left: 190px;
+}
+
+.container-fluid {
+  padding-left: 0;
+}
+
+.sidebar {
+  padding-left: 20px; /* opcional, para no pegar el texto al borde */
+}
+
+.btn-mic {
+  background-color: #4fd1c5;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+  color: white;
+  font-size: 20px;
+  transition: background 0.3s;
+}
+
+.btn-mic:hover {
+  background-color: #38b2ac;
+}
+
+ul {
+  list-style-type: disc; 
+  padding-left: 1.2rem;
+}
+
+.sidebar-link {
+  text-decoration: none;   
+  color: #2c3e50;          
+}
+.prompt-box{
+    
+    width: 900px;
+}
+
+.sidebar-link:hover {
+  text-decoration: underline; 
+  color: #007bff;            
+}
+
+
+
 
