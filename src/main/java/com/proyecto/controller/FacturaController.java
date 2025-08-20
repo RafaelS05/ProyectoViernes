@@ -27,11 +27,12 @@ public class FacturaController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @GetMapping("/factura/registro")
+    @GetMapping({"/factura/", "/factura/registro"})
     public String registroConUsuario(Model model, HttpSession session) {
         Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
 
         if (usuarioLogueado == null) {
+            
             return "redirect:/login";
         }
 
@@ -80,7 +81,7 @@ public class FacturaController {
             model.addAttribute("usuarios", usuarioService.getUsuarios());
             model.addAttribute("facturas", facturaService.getFacturas());
             model.addAttribute("usuario", new Usuario());
-            return "factura/factura";
+            return "/factura/factura";
         }
 
         Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
@@ -98,6 +99,6 @@ public class FacturaController {
 
         redirectAttributes.addFlashAttribute(messageSource.getMessage("Factura.guardada", null, locale));
 
-        return "redirect:factura/registro";
+        return "redirect:/factura/";
     }
 }

@@ -122,5 +122,16 @@
             </section>
         </div>
 
+        <!-- Fragmento: Barra de busqueda -->
+        <div th:fragment="Barra-busqueda">
+            <nav class="text-center">
+                <form class="d-inline-flex" role="search" th:action="@{/buscar}" method="get">
+                    <input class="form-control me-4" type="search" name="q"
+                           placeholder="¿Qué deseas buscar?" aria-label="Search"
+                           th:value="${param.q}">
+                    <button class="btn btn-salmon me-2" type="submit">Buscar</button>
+                </form>
+            </nav>
+        </div>
     </body>
 </html>
