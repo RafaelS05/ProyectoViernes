@@ -46,7 +46,6 @@
                                             <a class="nav-link dropdown-toggle" href="#" id="serviciosDropdown" role="button" data-bs-toggle="dropdown" th:text="#{header.servicios}">Servicios</a>
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" th:href="@{/factura/registro}">Facturación</a></li>
-                                                <li><a class="dropdown-item" th:href="@{/servicios/contabilidad}">Contabilidad</a></li>
                                                 <li><a class="dropdown-item" th:href="@{/asesoria/asesoria}">Asesorías</a></li>
                                             </ul>
                                         </li>
@@ -93,8 +92,8 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <h6 th:text="#{footer.productos}">Productos</h6>
-                                        <a th:href="@{/productos/software}" class="d-block text-muted">Software</a>
-                                        <a th:href="@{/productos/facturacion}" class="d-block text-muted">Facturación electrónica</a>
+                                        <a href="https://www.alegra.com/costarica/" target="_blank" class="d-block text-muted">Software</a>
+                                        <a href="https://www.facturaelectronica.cr/" target="_blank" class="d-block text-muted">Facturación electrónica</a>
                                     </div>
                                     <div class="col-md-4">
                                         <h6 th:text="#{footer.educacion}">Educación</h6>
@@ -113,7 +112,6 @@
                                                 <li><a class="dropdown-item" href="mailto:soporte@siemcontabilidad.com">📧 soporte@siemcontabilidad.com</a></li>
                                             </ul>
                                         </div>
-                                        <a th:href="@{/trabajo}" class="d-block text-muted">Trabajá con nosotros</a>
                                         <div class="mt-2">
                                             <a href="https://facebook.com" target="_blank" class="text-muted me-3"><i class="fab fa-facebook fa-lg"></i></a>
                                             <a href="https://instagram.com" target="_blank" class="text-muted me-3"><i class="fab fa-instagram fa-lg"></i></a>
