@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}"></head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"></header>
+
+        <div class="container mt-5">
+            <h1 class="mb-3 text-primary">Curso: Facturación y Control de Inventario</h1>
+            <p class="lead">Aprende a gestionar facturación, ventas y control de inventario en Excel para mantener un mejor manejo administrativo de tu negocio.</p>
+
+            <hr class="my-4">
+
+            <div class="row">
+                <!-- Módulo 1 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">📗 Módulo 1: Introducción a la Facturación en Excel</h5>
+                            <p class="card-text">Crea tus primeras facturas en Excel usando formatos personalizables y fórmulas básicas.</p>
+                            <a href="https://www.youtube.com/watch?v=vPq9p7nHhL0" class="btn btn-outline-primary">Ir al módulo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Módulo 2 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">📘 Módulo 2: Registro de Ventas y Clientes</h5>
+                            <p class="card-text">Aprende a registrar ventas y clientes para dar seguimiento a tus transacciones de manera ordenada.</p>
+                            <a href="https://www.youtube.com/watch?v=Ezb8GrisfhA" class="btn btn-outline-primary">Ir al módulo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Módulo 3 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">📙 Módulo 3: Control de Inventario</h5>
+                            <p class="card-text">Diseña una hoja de control de inventario con entradas, salidas y alertas de bajo stock.</p>
+                            <a href="https://www.youtube.com/watch?v=hDD7jdWSO3U" class="btn btn-outline-primary">Ir al módulo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Módulo 4 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">📕 Módulo 4: Reportes y Análisis de Ventas</h5>
+                            <p class="card-text">Construye reportes de ventas e inventario con gráficos dinámicos para mejorar la toma de decisiones.</p>
+                            <a href="https://www.youtube.com/watch?v=V1wC6FVPifU" class="btn btn-outline-primary">Ir al módulo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-5">
+                <a th:href="@{/cursos}" class="btn btn-secondary">← Volver al inicio</a>
+            </div>
+        </div>
+
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    </body>
+</html>

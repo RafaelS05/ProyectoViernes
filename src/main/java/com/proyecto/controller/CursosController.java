@@ -15,4 +15,8 @@ public class CursosController {
     public String mostrarCursoExcel() {
         return "cursos/cursoexcel"; 
     }
+    @GetMapping("/cursofac")
+    public String mostrarCursoFac() {
+        return "cursos/cursofacturacion"; 
+    }
 }
